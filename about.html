@@ -156,22 +156,33 @@
 
     /* ─── MAKERS SECTION ─── */
     .makers {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       border-bottom: 2.5px solid var(--black);
     }
-
-    .maker-card {
-      padding: 72px 64px;
-      border-right: 2.5px solid var(--black);
+    .maker-row {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 40px;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+      border-bottom: 2.5px solid var(--black);
     }
-    .maker-card:last-child { border-right: none; }
-    .maker-card-text { display: flex; flex-direction: column; }
-
+    .maker-row:last-child { border-bottom: none; }
+    .maker-photo {
+      position: relative;
+      overflow: hidden;
+      border-right: 2.5px solid var(--black);
+    }
+    .maker-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .maker-copy {
+      padding: 100px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .maker-badge {
       display: inline-block;
       font-family: 'DakotaRough', sans-serif;
@@ -179,14 +190,15 @@
       padding: 6px 16px;
       border: 2px solid var(--black);
       border-radius: 6px;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
       transform: rotate(-2deg);
       box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
       width: fit-content;
     }
     .maker-name {
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      margin-bottom: 6px;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      line-height: 1;
+      margin-bottom: 8px;
     }
     .maker-title {
       font-family: 'GTPlanar', sans-serif;
@@ -195,29 +207,14 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: #888;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
-    .maker-card p {
-      font-size: 1rem;
+    .maker-copy p {
+      font-size: 1.05rem;
       line-height: 1.75;
       color: #444;
       margin-bottom: 16px;
-    }
-
-    /* Photo booth strip */
-    .photo-strip {
-      flex-shrink: 0;
-      width: 210px;
-      transform: rotate(3deg);
-      box-shadow: 4px 4px 16px rgba(0,0,0,0.18);
-      border-radius: 4px;
-      overflow: hidden;
-      border: 6px solid white;
-      outline: 1.5px solid #ddd;
-    }
-    .photo-strip img {
-      width: 100%;
-      display: block;
+      max-width: 420px;
     }
 
     /* ─── ILLUSTRATOR SECTION ─── */
@@ -416,9 +413,11 @@
       .nav { padding: 14px 24px; }
       .about-hero { grid-template-columns: 1fr; padding: 60px 28px; gap: 40px; }
       .hero-sticker { display: none; }
-      .origin, .makers, .illustrator { grid-template-columns: 1fr; }
-      .origin-copy, .maker-card { padding: 56px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
-      .maker-card:last-child { border-bottom: none; }
+      .origin, .illustrator { grid-template-columns: 1fr; }
+      .origin-copy { padding: 56px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .maker-row { grid-template-columns: 1fr; min-height: auto; }
+      .maker-photo { min-height: 320px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .maker-copy { padding: 56px 28px; }
       .origin-image { padding: 48px 28px; }
       .illo-copy { padding: 56px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
       .illo-image { padding: 48px 28px; }
@@ -482,28 +481,28 @@
 
   <!-- ── THE MAKERS ── -->
   <section class="makers">
-    <div class="maker-card">
-      <div class="maker-card-text">
+    <div class="maker-row">
+      <div class="maker-photo">
+        <img src="illo/kirsten and sai.png" alt="Kirsten and Sailor">
+      </div>
+      <div class="maker-copy">
         <span class="maker-badge" style="background:var(--yellow);">Co-Founder</span>
         <h2 class="maker-name">Kirsten Ludwig</h2>
         <p class="maker-title">Mom. Navigating it firsthand.</p>
         <p>Kirsten has lived this — the pickups, the schedule swaps, the moments when her daughter Sailor was overwhelmed just trying to keep track of her own life.</p>
         <p>2 Homies is the tool she wished she could have put in Sailor's hands years ago. Made from the inside out.</p>
       </div>
-      <div class="photo-strip">
-        <img src="illo/kirsten solo .png" alt="Kirsten">
-      </div>
     </div>
-    <div class="maker-card">
-      <div class="maker-card-text">
+    <div class="maker-row">
+      <div class="maker-photo">
+        <img src="illo/chris.png" alt="Chris">
+      </div>
+      <div class="maker-copy">
         <span class="maker-badge" style="background:var(--blue);color:white;border-color:var(--black);">Co-Founder</span>
         <h2 class="maker-name">Chris Danton</h2>
         <p class="maker-title">Mom. Friend to the big ones and the small ones.</p>
         <p>Chris watched Kirsten and her kids navigate this up close — and felt the gap just as clearly. As a mom, a creative director, and a friend to the whole family, she knew this tool needed to exist.</p>
         <p>She's here because she believes in it — and because the kids in her life deserve something made just for them too.</p>
-      </div>
-      <div class="photo-strip">
-        <img src="illo/chris.png" alt="Chris">
       </div>
     </div>
   </section>
