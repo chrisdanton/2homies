@@ -629,21 +629,27 @@
       color: rgba(0,0,0,0.4);
     }
 
+    /* ─── TESTIMONIALS SLIDER ─── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 960px) {
       .nav { padding: 14px 24px; }
-      .hero { padding: 28px 20px; min-height: auto; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .book-left { border-right: none; border-bottom: 2.5px solid var(--black); padding: 40px 28px; min-height: 300px; }
+      .book-left { border-right: none; border-bottom: 2.5px solid var(--black); padding: 40px 28px; min-height: 260px; }
       .book-right { padding: 52px 28px; }
-      .book-left { border-right: 2.5px solid var(--black); border-radius: 6px 6px 0 0; min-height: 220px; }
-      .book-right { border-left: 2.5px solid var(--black); border-radius: 0 0 6px 6px; }
       .intro, .chapter, .two-homes { grid-template-columns: 1fr; }
       .chapter.flip { direction: ltr; }
       .intro-left, .intro-right { padding: 52px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
       .ch-color { padding: 52px 28px; border-right: none !important; border-left: none !important; border-bottom: 2.5px solid var(--black); }
-      .ch-image { min-height: 260px; }
-      .home-red, .home-purple { min-height: 200px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .ch-image { min-height: 260px; border-bottom: 2.5px solid var(--black); }
+      .home-red, .home-purple { min-height: 220px; border-right: none; border-bottom: 2.5px solid var(--black); }
       .spread-section .spread-caption { flex-direction: column; padding: 32px 28px; }
       .buy { grid-template-columns: 1fr; }
       .buy-image { border-right: none; border-bottom: 2.5px solid var(--black); padding: 40px 28px; }
@@ -654,6 +660,27 @@
       .footer-logo-col { padding: 36px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
       .footer-links-col { padding: 36px 28px; }
       .footer-bottom { padding: 16px 28px; flex-direction: column; gap: 4px; }
+
+      /* Testimonials: horizontal scroll-snap slider */
+      .testimonials-grid {
+        grid-template-columns: unset;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 0;
+        margin: 0 -28px;
+        padding: 0;
+      }
+      .testimonials-grid > div {
+        flex: 0 0 85vw;
+        scroll-snap-align: start;
+        padding: 0 28px;
+        border-left: none !important;
+        border-right: none !important;
+        border-right: 2.5px solid var(--black) !important;
+      }
+      .testimonials-grid > div:last-child { border-right: none !important; }
     }
   </style>
 </head>
@@ -715,7 +742,7 @@
       <ol class="how-it-works-list">
         <li>
           <span class="step-num">1</span>
-          <span class="step-text"><strong>Color code your days.</strong> Home 1, Home 2. Both belong to you.</span>
+          <span class="step-text"><strong>Color code your days.</strong> Who's picking up? When's the swap? Mark Home 1 and Home 2 so the whole week makes sense at a glance.</span>
         </li>
         <li>
           <span class="step-num">2</span>
@@ -809,7 +836,7 @@
   <!-- ── TESTIMONIALS ── -->
   <section style="background:var(--cream,#FFFDF5);border-bottom:2.5px solid var(--black);padding:110px 80px;">
     <p class="section-label" style="color:var(--orange);margin-bottom:48px;text-align:center;">What parents are saying</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto;">
+    <div class="testimonials-grid">
 
       <div style="display:flex;flex-direction:column;gap:20px;">
         <p style="font-family:'DakotaRough',sans-serif;font-size:1.5rem;line-height:1.3;color:var(--black);">"My daughter used to cry every Sunday because she couldn't remember whose week it was. This calendar changed that."</p>
