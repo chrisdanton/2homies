@@ -1,5 +1,6 @@
 .DS_Store
 illo/*.psd
 illo/STICKER_*.png
-illo/2H_stickers_2_*.png
+illo/2H_stickers_2_[0-9].png
+illo/2H_stickers_2_1[0-9].png
 illo/stickers.png
