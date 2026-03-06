@@ -639,48 +639,31 @@
     }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 960px) {
+    @media (max-width: 1024px) {
       .nav { padding: 14px 24px; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero { grid-template-columns: 1fr !important; min-height: auto; }
       .book-left { border-right: none; border-bottom: 2.5px solid var(--black); padding: 40px 28px; min-height: 260px; }
       .book-right { padding: 52px 28px; }
-      .intro, .chapter, .two-homes { grid-template-columns: 1fr; }
+      .intro, .chapter, .two-homes { grid-template-columns: 1fr !important; }
       .chapter.flip { direction: ltr; }
       .intro-left, .intro-right { padding: 52px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
       .ch-color { padding: 52px 28px; border-right: none !important; border-left: none !important; border-bottom: 2.5px solid var(--black); }
       .ch-image { min-height: 260px; border-bottom: 2.5px solid var(--black); }
       .home-red, .home-purple { min-height: 220px; border-right: none; border-bottom: 2.5px solid var(--black); }
       .spread-section .spread-caption { flex-direction: column; padding: 32px 28px; }
-      .buy { grid-template-columns: 1fr; }
+      .buy { grid-template-columns: 1fr !important; }
       .buy-image { border-right: none; border-bottom: 2.5px solid var(--black); padding: 40px 28px; }
       .buy-details { padding: 48px 28px; }
       .footer-shout { padding: 40px 28px 0; }
       .footer-shout-text { font-size: clamp(3.5rem, 12vw, 6rem); }
-      .footer-body { grid-template-columns: 1fr; }
+      .footer-body { grid-template-columns: 1fr !important; }
       .footer-logo-col { padding: 36px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
       .footer-links-col { padding: 36px 28px; }
       .footer-bottom { padding: 16px 28px; flex-direction: column; gap: 4px; }
 
-      /* Testimonials: horizontal scroll-snap slider */
-      .testimonials-grid {
-        grid-template-columns: unset;
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 0;
-        margin: 0 -28px;
-        padding: 0;
-      }
-      .testimonials-grid > div {
-        flex: 0 0 85vw;
-        scroll-snap-align: start;
-        padding: 0 28px;
-        border-left: none !important;
-        border-right: none !important;
-        border-right: 2.5px solid var(--black) !important;
-      }
-      .testimonials-grid > div:last-child { border-right: none !important; }
+      /* Testimonials: hide grid, show carousel */
+      .testimonials-grid { display: none; }
+      .testimonials-carousel { display: block !important; }
     }
   </style>
 </head>
@@ -836,43 +819,81 @@
   <!-- ── TESTIMONIALS ── -->
   <section style="background:var(--cream,#FFFDF5);border-bottom:2.5px solid var(--black);padding:110px 80px;">
     <p class="section-label" style="color:var(--orange);margin-bottom:48px;text-align:center;">What parents are saying</p>
-    <div class="testimonials-grid">
 
+    <!-- Desktop: 3-col grid -->
+    <div class="testimonials-grid">
       <div style="display:flex;flex-direction:column;gap:20px;">
         <p style="font-family:'DakotaRough',sans-serif;font-size:1.5rem;line-height:1.3;color:var(--black);">"My daughter used to cry every Sunday because she couldn't remember whose week it was. This calendar changed that."</p>
         <div style="display:flex;align-items:center;gap:12px;">
-          <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:var(--blue);"></span>
-          <div>
-            <p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">Sarah M.</p>
-            <p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Mom of two, shared custody</p>
-          </div>
+          <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:var(--blue);flex-shrink:0;"></span>
+          <div><p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">Sarah M.</p><p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Mom of two, shared custody</p></div>
         </div>
       </div>
-
       <div style="display:flex;flex-direction:column;gap:20px;border-left:2.5px solid var(--black);border-right:2.5px solid var(--black);padding:0 48px;">
         <p style="font-family:'DakotaRough',sans-serif;font-size:1.5rem;line-height:1.3;color:var(--black);">"He's 8 and was constantly anxious about his schedule. Now he checks his calendar himself. I didn't expect it to make such a big difference."</p>
         <div style="display:flex;align-items:center;gap:12px;">
-          <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:var(--green);"></span>
-          <div>
-            <p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">James T.</p>
-            <p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Dad, co-parenting since 2022</p>
-          </div>
+          <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:var(--green);flex-shrink:0;"></span>
+          <div><p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">James T.</p><p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Dad, co-parenting since 2022</p></div>
         </div>
       </div>
-
       <div style="display:flex;flex-direction:column;gap:20px;">
         <p style="font-family:'DakotaRough',sans-serif;font-size:1.5rem;line-height:1.3;color:var(--black);">"I gave this to my daughter and she filled in both homes herself. She put stickers on the days she's most excited about. It made me cry."</p>
         <div style="display:flex;align-items:center;gap:12px;">
-          <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:var(--red);"></span>
-          <div>
-            <p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">Priya K.</p>
-            <p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Mom of a 10-year-old</p>
+          <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+          <div><p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">Priya K.</p><p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Mom of a 10-year-old</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile: auto-carousel with dots -->
+    <div class="testimonials-carousel" style="display:none;">
+      <div id="tc-slides" style="position:relative;overflow:hidden;min-height:280px;">
+        <div class="tc-slide" style="display:flex;flex-direction:column;gap:20px;">
+          <p style="font-family:'DakotaRough',sans-serif;font-size:1.4rem;line-height:1.3;color:var(--black);">"My daughter used to cry every Sunday because she couldn't remember whose week it was. This calendar changed that."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="display:inline-block;width:32px;height:32px;border-radius:50%;background:var(--blue);flex-shrink:0;"></span>
+            <div><p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">Sarah M.</p><p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Mom of two, shared custody</p></div>
+          </div>
+        </div>
+        <div class="tc-slide" style="display:none;flex-direction:column;gap:20px;">
+          <p style="font-family:'DakotaRough',sans-serif;font-size:1.4rem;line-height:1.3;color:var(--black);">"He's 8 and was constantly anxious about his schedule. Now he checks his calendar himself. I didn't expect it to make such a big difference."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="display:inline-block;width:32px;height:32px;border-radius:50%;background:var(--green);flex-shrink:0;"></span>
+            <div><p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">James T.</p><p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Dad, co-parenting since 2022</p></div>
+          </div>
+        </div>
+        <div class="tc-slide" style="display:none;flex-direction:column;gap:20px;">
+          <p style="font-family:'DakotaRough',sans-serif;font-size:1.4rem;line-height:1.3;color:var(--black);">"I gave this to my daughter and she filled in both homes herself. She put stickers on the days she's most excited about. It made me cry."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="display:inline-block;width:32px;height:32px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            <div><p style="font-family:'GTPlanar',sans-serif;font-weight:700;font-size:0.85rem;margin:0;">Priya K.</p><p style="font-family:'GTPlanar',sans-serif;font-size:0.78rem;color:#888;margin:0;">Mom of a 10-year-old</p></div>
           </div>
         </div>
       </div>
-
+      <div id="tc-dots" style="display:flex;justify-content:center;gap:10px;margin-top:28px;">
+        <span class="tc-dot" data-i="0" style="width:10px;height:10px;border-radius:50%;background:var(--black);cursor:pointer;transition:opacity 0.2s;"></span>
+        <span class="tc-dot" data-i="1" style="width:10px;height:10px;border-radius:50%;background:var(--black);opacity:0.25;cursor:pointer;transition:opacity 0.2s;"></span>
+        <span class="tc-dot" data-i="2" style="width:10px;height:10px;border-radius:50%;background:var(--black);opacity:0.25;cursor:pointer;transition:opacity 0.2s;"></span>
+      </div>
     </div>
   </section>
+
+  <script>
+    (function(){
+      var slides = document.querySelectorAll('.tc-slide');
+      var dots = document.querySelectorAll('.tc-dot');
+      var cur = 0;
+      function show(n){
+        slides[cur].style.display = 'none';
+        dots[cur].style.opacity = '0.25';
+        cur = n % slides.length;
+        slides[cur].style.display = 'flex';
+        dots[cur].style.opacity = '1';
+      }
+      dots.forEach(function(d){ d.addEventListener('click', function(){ show(+d.dataset.i); }); });
+      setInterval(function(){ show(cur + 1); }, 4000);
+    })();
+  </script>
 
   <!-- ── BUY ── -->
   <section class="buy" id="shop">
