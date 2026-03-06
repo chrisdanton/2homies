@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.name }}{% unless current_page == 'home' %} — {{ page_title }}{% endunless %}</title>
+  {{ head_content }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:  #FFFFFF;
+      --black:  #111111;
+      --blue:   #1B3FDE;
+      --red:    #E8321A;
+      --green:  #2B8A3E;
+      --yellow: #F5C200;
+      --orange: #FF6B00;
+      --cream:  #FFFDF5;
+      --gray:   #F2F0EC;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── ANNOUNCEMENT ─── */
+    .bar {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: white;
+      border-bottom: 2px solid var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .nav-logo {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo em { color: var(--blue); font-style: normal; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cart {
+      background: var(--blue);
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+    }
+    .nav-cart:hover { background: var(--black) !important; }
+
+    /* ─── HOME: OPEN BOOK HERO ─── */
+    /* Mimics the reel: spiral bound spread — photo left, bold color + text right */
+    .book-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 108px);
+      border-bottom: 2px solid var(--black);
+      background: var(--gray);
+      padding: 60px;
+      gap: 0;
+      align-items: center;
+      position: relative;
+    }
+
+    /* The "open book" wrapper — centered, with binding in the middle */
+    .book-spread {
+      display: grid;
+      grid-template-columns: 1fr 24px 1fr;
+      max-width: 1000px;
+      margin: 0 auto;
+      grid-column: 1 / -1;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+      border-radius: 2px;
+    }
+
+    /* Left page: product image */
+    .book-left {
+      background: white;
+      border-radius: 4px 0 0 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4/3;
+      border: 2px solid var(--black);
+      border-right: none;
+    }
+    .book-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 20px;
+    }
+
+    /* Spiral binding */
+    .book-spine {
+      background: white;
+      border-top: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 12px 0;
+      gap: 0;
+    }
+    .ring {
+      width: 20px;
+      height: 20px;
+      border: 3px solid var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Right page: bold color block + copy — like the reel */
+    .book-right {
+      background: var(--blue);
+      border-radius: 0 4px 4px 0;
+      border: 2px solid var(--black);
+      border-left: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 52px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-right-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .book-right-label .squiggle {
+      display: block;
+      color: var(--yellow);
+    }
+
+    .book-right-sub {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 40px;
+      max-width: 340px;
+    }
+
+    .book-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      width: fit-content;
+      transition: all 0.15s ease;
+    }
+    .book-cta:hover {
+      background: white;
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    }
+
+    /* decorative doodle on right page */
+    .book-doodle {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.15;
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee {
+      overflow: hidden;
+      border-bottom: 2px solid var(--black);
+      border-top: 2px solid var(--black);
+      background: var(--yellow);
+      padding: 13px 0;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 40px;
+      width: max-content;
+      animation: mscroll 22s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes mscroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .marquee-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      display: inline-block;
+    }
+
+    /* ─── CHAPTER PAGES ─── */
+    /* The core section — mimics the color-block spreads from the reel */
+    .chapters {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 2px solid var(--black);
+    }
+
+    .chapter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2px solid var(--black);
+      min-height: 400px;
+    }
+    .chapter:last-child { border-bottom: none; }
+
+    /* alternate: photo right on even chapters */
+    .chapter.flip { direction: rtl; }
+    .chapter.flip > * { direction: ltr; }
+
+    .chapter-color {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px;
+      border-right: 2px solid var(--black);
+    }
+    .chapter.flip .chapter-color {
+      border-right: none;
+      border-left: 2px solid var(--black);
+    }
+
+    .chapter-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .chapter-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      max-width: 380px;
+    }
+
+    .chapter-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      padding: 48px;
+    }
+
+    .chapter-icon {
+      font-size: 8rem;
+      line-height: 1;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+    }
+
+    /* ─── SHOP SECTION ─── */
+    .shop {
+      padding: 80px 64px;
+    }
+    .shop-h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      border: 2px solid var(--black);
+    }
+    .product-card {
+      display: block;
+      padding: 32px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+      border-right: 1px solid var(--black);
+    }
+    .product-card:hover { background: var(--cream); }
+    .product-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      margin-bottom: 20px;
+      border: 2px solid var(--black);
+      background: white;
+    }
+    .product-card-name {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .product-card-price { font-weight: 700; color: var(--blue); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 56px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      border-top: 2px solid var(--black);
+    }
+    .footer-brand {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .footer-brand em { color: var(--yellow); font-style: normal; }
+    .footer-tagline { font-size: 0.9rem; color: #888; line-height: 1.65; }
+    .footer-nav { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+    .footer-nav a { color: #888; text-decoration: none; font-size: 0.88rem; }
+    .footer-nav a:hover { color: white; }
+    .footer-bottom {
+      grid-column: 1/-1;
+      padding-top: 32px;
+      border-top: 1px solid #222;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: #444;
+    }
+
+    /* ─── PRODUCT PAGE ─── */
+    /* Also uses the open-book spread metaphor */
+    .product-page {
+      background: var(--gray);
+      padding: 60px;
+      min-height: calc(100vh - 108px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-spread {
+      display: grid;
+      grid-template-columns: 1fr 24px 1fr;
+      max-width: 1060px;
+      width: 100%;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.16);
+    }
+
+    .product-spread-left {
+      background: white;
+      border: 2px solid var(--black);
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .product-spread-main-img {
+      width: 100%;
+      flex: 1;
+      min-height: 300px;
+      object-fit: contain;
+      border: 2px solid var(--black);
+    }
+
+    .product-spread-thumbs {
+      display: flex;
+      gap: 8px;
+    }
+    .product-spread-thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border: 2px solid #ddd;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .product-spread-thumb:hover,
+    .product-spread-thumb.active { border-color: var(--blue); }
+
+    .product-spread-spine {
+      background: white;
+      border-top: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 16px 0;
+    }
+
+    .product-spread-right {
+      background: var(--blue);
+      border: 2px solid var(--black);
+      border-left: none;
+      border-radius: 0 4px 4px 0;
+      padding: 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pd-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+
+    .pd-name {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .pd-price {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--yellow);
+      margin-bottom: 24px;
+    }
+
+    .pd-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .pd-select {
+      display: block;
+      width: 100%;
+      padding: 13px 18px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      margin-bottom: 12px;
+      appearance: none;
+      cursor: pointer;
+    }
+    .pd-select option { color: var(--black); background: white; }
+
+    .pd-atc {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: all 0.15s ease;
+      margin-bottom: 28px;
+    }
+    .pd-atc:hover {
+      background: white;
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    }
+    .pd-atc:disabled {
+      background: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.4);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .pd-checks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pd-checks li {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pd-checks li::before {
+      content: '✓';
+      color: var(--yellow);
+      font-weight: 700;
+    }
+
+    /* ─── CART ─── */
+    .cart-page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+    .cart-h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+    }
+    .cart-empty { text-align: center; padding: 80px 0; }
+    .cart-empty p { font-size: 1.1rem; color: #777; margin-bottom: 20px; }
+    .cart-empty a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    .cart-line {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 22px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-line img { width: 80px; height: 80px; object-fit: cover; border: 2px solid var(--black); }
+    .cart-line-name { font-family: 'Fredoka', sans-serif; font-size: 1.15rem; font-weight: 600; }
+    .cart-line-meta { font-size: 0.85rem; color: #777; margin-top: 3px; }
+    .cart-line-price { font-weight: 700; color: var(--blue); }
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-top: 2px solid var(--black);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+    .btn-checkout {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: var(--blue);
+      color: white;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-checkout:hover { background: var(--black); }
+
+    /* ─── SUCCESS ─── */
+    .success-page {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 120px 40px;
+      text-align: center;
+    }
+    .success-mark { font-size: 4rem; margin-bottom: 24px; }
+    .success-h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .success-p { font-size: 1rem; line-height: 1.7; color: #555; margin-bottom: 36px; }
+    .success-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+
+      .book-hero { padding: 32px 20px; }
+      .book-spread { grid-template-columns: 1fr; }
+      .book-spine { display: none; }
+      .book-left { border-right: 2px solid var(--black); border-radius: 4px 4px 0 0; aspect-ratio: auto; min-height: 240px; }
+      .book-right { border-left: 2px solid var(--black); border-radius: 0 0 4px 4px; }
+
+      .chapter { grid-template-columns: 1fr; min-height: auto; }
+      .chapter.flip { direction: ltr; }
+      .chapter-color { padding: 48px 28px; border-right: none; border-bottom: 2px solid var(--black); }
+      .chapter.flip .chapter-color { border-left: none; border-bottom: 2px solid var(--black); }
+      .chapter-photo { padding: 40px 28px; min-height: 200px; }
+
+      .shop { padding: 56px 28px; }
+
+      .product-page { padding: 28px 20px; }
+      .product-spread { grid-template-columns: 1fr; }
+      .product-spread-spine { display: none; }
+      .product-spread-left { border-right: 2px solid var(--black); border-radius: 4px 4px 0 0; }
+      .product-spread-right { border-left: 2px solid var(--black); border-radius: 0 0 4px 4px; }
+
+      footer { grid-template-columns: 1fr; padding: 44px 28px; }
+      .footer-nav { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  {{ body_content }}
+
+  <div class="bar">✦ Made by moms &nbsp;✦&nbsp; Illustrated by Maxine McCrann &nbsp;✦&nbsp; Ships in 3–5 business days</div>
+
+  <nav>
+    <a href="{{ site.url }}" class="nav-logo">2<em>HOMIES</em></a>
+    <ul class="nav-links">
+      <li><a href="{{ site.url }}/products">Shop</a></li>
+      <li><a href="{{ site.url }}/about">About</a></li>
+      <li><a href="{{ site.url }}/cart" class="nav-cart">Cart ({{ cart.total_items }})</a></li>
+    </ul>
+  </nav>
+
+  {% if current_page == 'home' %}
+
+  <!-- ── HOME ── -->
+
+  <!-- Open book hero -->
+  <section class="book-hero">
+    <div class="book-spread">
+
+      <!-- Left page: cover image -->
+      <div class="book-left">
+        {% for product in site.products limit:1 %}
+          {% if product.images.size > 0 %}
+          <img src="{{ product.images[0].url }}" alt="{{ product.name }}">
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Spiral binding -->
+      <div class="book-spine">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+      </div>
+
+      <!-- Right page: bold copy block -->
+      <div class="book-right">
+        <!-- background doodle -->
+        <svg class="book-doodle" style="bottom:-20px;right:-20px;width:220px;" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="80" stroke="white" stroke-width="3" stroke-dasharray="8 6"/>
+          <circle cx="100" cy="100" r="50" stroke="white" stroke-width="2" stroke-dasharray="4 5"/>
+        </svg>
+
+        <h1 class="book-right-label">
+          A calendar
+          <span class="squiggle">both homes</span>
+          will love.
+        </h1>
+        <p class="book-right-sub">
+          For kids who split their time between two homes. Track special days, color-code your weeks, and know that both homes belong to you.
+        </p>
+        {% for product in site.products limit:1 %}
+        <a href="{{ product.url }}" class="book-cta">
+          Get the Calendar &nbsp;—&nbsp; {{ product.price | money }}
+        </a>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sticker marquee -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>Fun Friday</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Play Date!</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Yes Day!</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>No School!</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Half Day</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Field Trip</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Hair Cut!</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Vacay</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Pop's</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Mom's</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Bath Skip</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Dentist</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item"><span class="marquee-dot"></span>Fun Friday</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Play Date!</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Yes Day!</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>No School!</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Half Day</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Field Trip</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Hair Cut!</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Vacay</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Pop's</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Mom's</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Bath Skip</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Dentist</span>
+    </div>
+  </div>
+
+  <!-- Chapter spreads — mimicking the color-block page turns from the reel -->
+  <section class="chapters">
+
+    <div class="chapter">
+      <div class="chapter-color" style="background: var(--blue);">
+        <div class="chapter-label">Color-code<br>your weeks.</div>
+        <p class="chapter-body">Track which days you're at which home. No confusion — just clarity, color, and your whole schedule at a glance.</p>
+      </div>
+      <div class="chapter-photo">
+        <div class="chapter-icon">📅</div>
+      </div>
+    </div>
+
+    <div class="chapter flip">
+      <div class="chapter-color" style="background: var(--red);">
+        <div class="chapter-label">Both homes<br>belong to you.</div>
+        <p class="chapter-body">Space to celebrate what's happening at each home — because both of them matter, and so do you.</p>
+      </div>
+      <div class="chapter-photo">
+        <div class="chapter-icon">🏠</div>
+      </div>
+    </div>
+
+    <div class="chapter">
+      <div class="chapter-color" style="background: var(--green);">
+        <div class="chapter-label">Stickers<br>included.</div>
+        <p class="chapter-body">Fun Friday, Play Date!, Yes Day!, No School, Half Day — a full sticker sheet for every kind of day.</p>
+      </div>
+      <div class="chapter-photo">
+        <div class="chapter-icon">⭐</div>
+      </div>
+    </div>
+
+    <div class="chapter flip">
+      <div class="chapter-color" style="background: var(--orange);">
+        <div class="chapter-label">Starts<br>any time.</div>
+        <p class="chapter-body">Undated pages mean you can start the moment it arrives — any month, any year. No waiting for January.</p>
+      </div>
+      <div class="chapter-photo">
+        <div class="chapter-icon">✨</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Shop -->
+  <section class="shop">
+    <h2 class="shop-h2">Get yours</h2>
+    <div class="product-grid">
+      {% for product in site.products %}
+      <a href="{{ product.url }}" class="product-card">
+        {% if product.images.size > 0 %}
+        <img src="{{ product.images[0].url }}" alt="{{ product.name }}">
+        {% endif %}
+        <div class="product-card-name">{{ product.name }}</div>
+        <div class="product-card-price">{{ product.price | money }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% elsif current_page == 'product' %}
+
+  <!-- ── PRODUCT PAGE ── -->
+  <!-- Same open-book layout as the hero -->
+
+  <div class="product-page">
+    <div class="product-spread">
+
+      <!-- Left page: images -->
+      <div class="product-spread-left">
+        {% if product.images.size > 0 %}
+        <img class="product-spread-main-img" id="main-img"
+             src="{{ product.images[0].url }}"
+             alt="{{ product.name }}">
+        {% if product.images.size > 1 %}
+        <div class="product-spread-thumbs">
+          {% for image in product.images %}
+          <img class="product-spread-thumb {% if forloop.first %}active{% endif %}"
+               src="{{ image.url }}"
+               alt="{{ product.name }} {{ forloop.index }}"
+               onclick="document.getElementById('main-img').src='{{ image.url }}'; document.querySelectorAll('.product-spread-thumb').forEach(function(t){t.classList.remove('active')}); this.classList.add('active');">
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% endif %}
+      </div>
+
+      <!-- Spine -->
+      <div class="product-spread-spine">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+      </div>
+
+      <!-- Right page: product info -->
+      <div class="product-spread-right">
+        <p class="pd-eyebrow">2 Homies ✦ A Yearlong Calendar</p>
+        <h1 class="pd-name">{{ product.name }}</h1>
+        <div class="pd-price">{{ product.price | money }}</div>
+
+        <div class="pd-desc">
+          {% if product.description != blank %}
+            {{ product.description }}
+          {% else %}
+            <p>A yearlong calendar for kids with 2 homes. Track your weeks, celebrate special days, and know that wherever you are — you're loved. Includes a full sticker sheet.</p>
+          {% endif %}
+        </div>
+
+        {% form 'cart', product %}
+          {% if product.variants.size > 1 %}
+          <select name="variant_id" class="pd-select">
+            {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% unless variant.status == 'available' %}disabled{% endunless %}>
+              {{ variant.name }}{% unless variant.status == 'available' %} — Sold Out{% endunless %}
+            </option>
+            {% endfor %}
+          </select>
+          {% else %}
+          <input type="hidden" name="variant_id" value="{{ product.variants[0].id }}">
+          {% endif %}
+          <button type="submit" class="pd-atc" {% if product.status == 'sold-out' %}disabled{% endif %}>
+            {% if product.status == 'sold-out' %}Sold Out{% else %}Add to Cart{% endif %}
+          </button>
+        {% endform %}
+
+        <ul class="pd-checks">
+          <li>Starts any time — undated pages</li>
+          <li>Sticker sheet included</li>
+          <li>Made by moms, illustrated by Maxine McCrann</li>
+          <li>Ships in 3–5 business days</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  {% elsif current_page == 'cart' %}
+
+  <!-- ── CART ── -->
+
+  <div class="cart-page">
+    <h1 class="cart-h1">Your Cart</h1>
+    {% if cart.items.size > 0 %}
+      {% for item in cart.items %}
+      <div class="cart-line">
+        {% if item.product.images.size > 0 %}
+        <img src="{{ item.product.images[0].url }}" alt="{{ item.product.name }}">
+        {% endif %}
+        <div>
+          <div class="cart-line-name">{{ item.product.name }}</div>
+          {% if item.variant.name != blank %}
+          <div class="cart-line-meta">{{ item.variant.name }}</div>
+          {% endif %}
+          <div class="cart-line-meta">Qty: {{ item.quantity }}</div>
+        </div>
+        <div class="cart-line-price">{{ item.price | money }}</div>
+      </div>
+      {% endfor %}
+      <div class="cart-total">
+        <span>Total</span>
+        <span>{{ cart.total_price | money }}</span>
+      </div>
+      {% form 'checkout' %}
+      <button type="submit" class="btn-checkout">Checkout →</button>
+      {% endform %}
+    {% else %}
+      <div class="cart-empty">
+        <p>Your cart is empty.</p>
+        <a href="{{ site.url }}/products">← Back to the shop</a>
+      </div>
+    {% endif %}
+  </div>
+
+  {% elsif current_page == 'success' %}
+
+  <!-- ── SUCCESS ── -->
+
+  <div class="success-page">
+    <div class="success-mark">🎉</div>
+    <h1 class="success-h1">You've got this!</h1>
+    <p class="success-p">Order confirmed. Your 2 Homies Calendar is on its way. Get ready to color-code some weeks — and remember: you are loved.</p>
+    <a href="{{ site.url }}" class="success-link">← Back to the shop</a>
+  </div>
+
+  {% endif %}
+
+  <footer>
+    <div>
+      <div class="footer-brand">2<em>HOMIES</em></div>
+      <p class="footer-tagline">Tools for homies with 2 homes.<br>You are loved.</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="{{ site.url }}/products">Shop</a>
+      <a href="{{ site.url }}/about">About</a>
+      <a href="{{ site.url }}/cart">Cart</a>
+    </nav>
+    <div class="footer-bottom">
+      <span>© {{ 'now' | date: '%Y' }} 2 Homies. All rights reserved.</span>
+      <span>Powered by Big Cartel</span>
+    </div>
+  </footer>
+
+</body>
+</html>

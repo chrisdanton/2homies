@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — 2Homies Calendar</title>
+
+  <style>
+    @font-face {
+      font-family: 'DakotaRough';
+      src: url('Dakota-Rough-Regular.otf') format('opentype');
+      font-weight: normal;
+    }
+    @font-face {
+      font-family: 'GTPlanar';
+      src: url('GT-Planar-Trial-VF.ttf') format('truetype');
+      font-weight: 100 900;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:   #FFFFFF;
+      --black:   #111111;
+      --blue:    #1B3FDE;
+      --red:     #E63B1F;
+      --green:   #2A8C3F;
+      --yellow:  #F5C200;
+      --purple:  #5B5FC7;
+      --orange:  #FF6B00;
+      --cream:   #FFFDF5;
+      --gray:    #F0EDEA;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'GTPlanar', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'DakotaRough', sans-serif; font-weight: normal; }
+
+    /* ─── NAV (shared) ─── */
+    .bar {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 48px;
+      background: white;
+      border-bottom: 2.5px solid var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 300;
+    }
+    .nav-logo { font-family: 'DakotaRough', sans-serif; font-size: 2rem; color: var(--black); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cart { background: var(--black); color: white !important; padding: 9px 22px; border-radius: 100px; }
+
+    /* ─── ABOUT HERO ─── */
+    .about-hero {
+      background: var(--green);
+      padding: 100px 80px;
+      border-bottom: 2.5px solid var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      min-height: 60vh;
+    }
+    .about-hero-copy h1 {
+      font-size: clamp(4rem, 7vw, 8rem);
+      color: white;
+      line-height: 0.95;
+      margin-bottom: 28px;
+    }
+    .about-hero-copy p {
+      font-size: 1.1rem;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.85);
+      max-width: 420px;
+    }
+    .about-hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-hero-image img {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    /* ─── ORIGIN STORY ─── */
+    .origin {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2.5px solid var(--black);
+    }
+    .origin-copy {
+      padding: 80px 64px;
+      border-right: 2.5px solid var(--black);
+    }
+    .origin-copy .section-label {
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .origin-copy h2 { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1; margin-bottom: 28px; }
+    .origin-copy p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #3a3a3a;
+      margin-bottom: 18px;
+    }
+    .origin-pullquote {
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 1.6rem;
+      color: var(--blue);
+      border-left: 4px solid var(--blue);
+      padding-left: 20px;
+      margin-top: 32px;
+      line-height: 1.3;
+    }
+    .origin-image {
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+    .origin-image img { width: 100%; max-width: 800px; }
+
+    /* ─── MAKERS SECTION ─── */
+    .makers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2.5px solid var(--black);
+    }
+
+    .maker-card {
+      padding: 72px 64px;
+      border-right: 2.5px solid var(--black);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+    }
+    .maker-card:last-child { border-right: none; }
+    .maker-card-text { display: flex; flex-direction: column; }
+
+    .maker-badge {
+      display: inline-block;
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 0.9rem;
+      padding: 6px 16px;
+      border: 2px solid var(--black);
+      border-radius: 6px;
+      margin-bottom: 20px;
+      transform: rotate(-2deg);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+      width: fit-content;
+    }
+    .maker-name {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      margin-bottom: 6px;
+    }
+    .maker-title {
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 24px;
+    }
+    .maker-card p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    /* Photo booth strip */
+    .photo-strip {
+      flex-shrink: 0;
+      width: 210px;
+      transform: rotate(3deg);
+      box-shadow: 4px 4px 16px rgba(0,0,0,0.18);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 6px solid white;
+      outline: 1.5px solid #ddd;
+    }
+    .photo-strip img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ─── ILLUSTRATOR SECTION ─── */
+    .illustrator {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2.5px solid var(--black);
+      min-height: 600px;
+    }
+    .illo-photo {
+      position: relative;
+      overflow: hidden;
+      border-right: 2.5px solid var(--black);
+    }
+    .illo-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .illo-photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      padding: 40px 32px 24px;
+      color: white;
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .illo-photo-caption a { color: var(--yellow); text-decoration: none; }
+    .illo-copy {
+      background: var(--purple);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .illo-copy .section-label {
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .illo-copy h2 { font-size: clamp(2.5rem, 4vw, 4.5rem); color: white; line-height: 1; margin-bottom: 24px; }
+    .illo-copy p { font-size: 1.05rem; line-height: 1.72; color: rgba(255,255,255,0.82); margin-bottom: 16px; max-width: 420px; }
+
+    /* ─── MISSION ─── */
+    .mission {
+      background: var(--yellow);
+      padding: 100px 64px;
+      text-align: center;
+      border-bottom: 2.5px solid var(--black);
+    }
+    .mission h2 {
+      font-size: clamp(3.5rem, 7vw, 8rem);
+      line-height: 0.95;
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+    .mission p {
+      font-size: 1.1rem;
+      line-height: 1.72;
+      color: rgba(0,0,0,0.65);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .mission .btn-primary {
+      margin: 0 auto;
+      background: var(--black);
+      color: white;
+      border-color: var(--black);
+    }
+    .mission .btn-primary:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 1.4rem;
+      padding: 16px 38px;
+      border-radius: 4px;
+      text-decoration: none;
+      width: fit-content;
+      transition: all 0.15s ease;
+      border: 2.5px solid var(--black);
+    }
+    .btn-primary:hover {
+      transform: translate(-3px,-3px);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--yellow);
+      border-top: 2.5px solid var(--black);
+      overflow: hidden;
+    }
+    .footer-shout {
+      padding: 100px 80px 0;
+      border-bottom: 2.5px solid var(--black);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .footer-shout-text {
+      font-family: 'DakotaRough', sans-serif;
+      font-size: clamp(5rem, 10vw, 12rem);
+      line-height: 0.9;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+    .footer-shout-mascot {
+      flex-shrink: 0;
+      align-self: flex-end;
+    }
+    .footer-shout-mascot img {
+      width: clamp(120px, 16vw, 220px);
+      display: block;
+    }
+    .footer-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2.5px solid var(--black);
+    }
+    .footer-logo-col {
+      padding: 56px 80px;
+      border-right: 2.5px solid var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .footer-logo-col img { height: 36px; width: auto; mix-blend-mode: multiply; }
+    .footer-logo-col p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(0,0,0,0.55);
+      max-width: 320px;
+    }
+    .footer-links-col {
+      padding: 56px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+    .footer-link-sticker {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 1.1rem;
+      color: var(--black);
+      text-decoration: none;
+      background: white;
+      border: 2px solid var(--black);
+      padding: 8px 20px;
+      border-radius: 6px;
+      width: fit-content;
+      box-shadow: 3px 3px 0 var(--black);
+      transition: all 0.12s ease;
+    }
+    .footer-link-sticker:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--black);
+    }
+    .footer-link-sticker.blue { background: var(--blue); color: white; }
+    .footer-link-sticker.red { background: var(--red); color: white; }
+    .footer-link-sticker.green { background: var(--green); color: white; }
+    .footer-bottom {
+      padding: 16px 64px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: rgba(0,0,0,0.4);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .nav { padding: 14px 24px; }
+      .about-hero { grid-template-columns: 1fr; padding: 60px 28px; gap: 40px; }
+      .origin, .makers, .illustrator { grid-template-columns: 1fr; }
+      .origin-copy, .maker-card { padding: 56px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .maker-card:last-child { border-bottom: none; }
+      .origin-image { padding: 48px 28px; }
+      .illo-copy { padding: 56px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .illo-image { padding: 48px 28px; }
+      .mission { padding: 72px 28px; }
+      .footer-shout { padding: 40px 28px 0; }
+      .footer-shout-text { font-size: clamp(3.5rem, 12vw, 6rem); }
+      .footer-body { grid-template-columns: 1fr; }
+      .footer-logo-col { padding: 36px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .footer-links-col { padding: 36px 28px; }
+      .footer-bottom { padding: 16px 28px; flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bar">✦ A book for homies with 2 homes. &nbsp;✦&nbsp; Ships in 3–5 days.</div>
+
+  <header class="nav">
+    <a href="preview.html" class="nav-logo">
+      <img src="logo.png" alt="2Homies" style="height:32px;display:block;mix-blend-mode:multiply;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'DakotaRough',sans-serif;font-size:1.8rem;">2HOMIES</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="preview.html#shop">Shop</a></li>
+      <li><a href="about.html" style="color:var(--blue);">About</a></li>
+      <li><a href="#" class="nav-cart">Cart (0)</a></li>
+    </ul>
+  </header>
+
+  <!-- ── ABOUT HERO ── -->
+  <section class="about-hero" style="position:relative;overflow:hidden;">
+    <!-- scattered stickers -->
+    <span style="position:absolute;top:18%;right:42%;font-family:'DakotaRough',sans-serif;font-size:0.8rem;background:var(--yellow);color:var(--black);border:2px solid var(--black);padding:5px 14px;border-radius:6px;transform:rotate(-6deg);box-shadow:2px 2px 0 rgba(0,0,0,0.2);opacity:0.9;">Yes Day!</span>
+    <span style="position:absolute;bottom:22%;right:44%;font-family:'DakotaRough',sans-serif;font-size:0.8rem;background:var(--red);color:white;border:2px solid var(--black);padding:5px 14px;border-radius:6px;transform:rotate(4deg);box-shadow:2px 2px 0 rgba(0,0,0,0.2);opacity:0.9;">Fun Friday</span>
+    <span style="position:absolute;top:14%;left:44%;font-family:'DakotaRough',sans-serif;font-size:0.8rem;background:var(--blue);color:white;border:2px solid var(--black);padding:5px 14px;border-radius:6px;transform:rotate(3deg);box-shadow:2px 2px 0 rgba(0,0,0,0.2);opacity:0.9;">Sleepover</span>
+    <span style="position:absolute;bottom:18%;left:43%;font-family:'DakotaRough',sans-serif;font-size:0.8rem;background:var(--orange);color:white;border:2px solid var(--black);padding:5px 14px;border-radius:6px;transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(0,0,0,0.2);opacity:0.9;">Play Date!</span>
+    <span style="position:absolute;top:50%;right:40%;font-family:'DakotaRough',sans-serif;font-size:0.8rem;background:white;color:var(--black);border:2px solid var(--black);padding:5px 14px;border-radius:6px;transform:rotate(5deg);box-shadow:2px 2px 0 rgba(0,0,0,0.2);opacity:0.85;">No School!</span>
+    <div class="about-hero-copy">
+      <p class="section-label" style="color:rgba(255,255,255,0.6);margin-bottom:20px;">About.</p>
+      <h1>A book for homies with 2 homes.</h1>
+      <p>Part calendar, part workbook, part journal, part coloring book — and a heavy dose of you've-got-this. Made for kids who know exactly what it means to have two bedrooms, two sets of rules, and two homes that both belong to them.</p>
+    </div>
+    <div class="about-hero-image">
+      <img src="illo/Book-gif-transparent.gif" alt="2 Homies Calendar" style="width:100%;max-width:640px;">
+    </div>
+  </section>
+
+  <!-- ── ORIGIN STORY ── -->
+  <section class="origin">
+    <div class="origin-copy">
+      <p class="section-label">The Story</p>
+      <h2>Made because nothing else existed.</h2>
+      <p>Nearly one in two kids will see their parents' marriage break up. That's a lot of kids navigating two schedules, two bedrooms, two lives — often without any tools made specifically for them.</p>
+      <p>We looked. We really looked. And we couldn't find anything that felt right — age-appropriate, fun, honest, and actually designed for the kid going through it, not for the adults around them.</p>
+      <p>So we made it ourselves.</p>
+      <p>The 2 Homies Calendar is a yearlong tool for kids ages 6–14 with two homes. It helps them track their schedule, name their feelings, find inspiration, and — most importantly — feel like their life is their own.</p>
+      <div class="origin-pullquote">"Both homes are yours. Full stop."</div>
+    </div>
+    <div class="origin-image">
+      <img src="illo/Cover mockup transparent.png" alt="2 Homies Calendar">
+    </div>
+  </section>
+
+  <!-- ── THE MAKERS ── -->
+  <section class="makers">
+    <div class="maker-card">
+      <div class="maker-card-text">
+        <span class="maker-badge" style="background:var(--yellow);">Co-Founder</span>
+        <h2 class="maker-name">Kirsten Ludwig</h2>
+        <p class="maker-title">Mom, Divorcee & Thought Leader — Los Angeles</p>
+        <p>Kirsten knows this world from the inside. As a mom and a divorcee raising her kid across two homes in LA, she felt the gap between what existed and what kids actually needed.</p>
+        <p>2 Homies is her answer to the tool she wished she could have handed her kid years ago.</p>
+      </div>
+      <div class="photo-strip">
+        <img src="illo/kirsten solo .png" alt="Kirsten">
+      </div>
+    </div>
+    <div class="maker-card">
+      <div class="maker-card-text">
+        <span class="maker-badge" style="background:var(--blue);color:white;border-color:var(--black);">Co-Founder</span>
+        <h2 class="maker-name">Chris Danton</h2>
+        <p class="maker-title">Mom, Ally & Creative Director — Europe</p>
+        <p>Chris is a mom, creative director, and strategist who brought the vision to life with brains and heart. Living in Europe, she's a long-distance collaborator with a very close perspective on what this project means.</p>
+        <p>She's here as an ally — and because great tools for kids deserve great design.</p>
+      </div>
+      <div class="photo-strip">
+        <img src="illo/chris.png" alt="Chris">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ILLUSTRATOR ── -->
+  <section class="illustrator">
+    <div class="illo-copy">
+      <p class="section-label">The Artist</p>
+      <h2>Maxine McCrann</h2>
+      <p>Maxine is the illustrator who made 2 Homies feel the way it does. Every feeling wheel, every light bulb, every little house — that's her. Based in Toronto, she's a resident color enthusiast whose work is warm, playful, and impossible to ignore.</p>
+      <p>She's the reason kids open the book and don't want to put it down.</p>
+      <p style="margin-top:8px;"><a href="https://www.instagram.com/hi_there_its_max/" style="color:var(--yellow);font-weight:700;">→ Follow Maxine's work ↗</a></p>
+    </div>
+    <div class="illo-image">
+      <img src="illo/maxine mccrann.png" alt="Maxine McCrann in her studio" style="border-radius:4px;object-fit:cover;width:100%;height:100%;">
+    </div>
+  </section>
+
+  <!-- ── MISSION ── -->
+  <section class="mission">
+    <h2>You've got this — and you're loved.</h2>
+    <p>The 2 Homies Calendar was made for kids who are already handling a lot. Both homes are theirs. Their feelings make sense. And they have everything they need to thrive in the life they've got.</p>
+    <a href="preview.html#shop" class="btn-primary">Get the Calendar — $30</a>
+  </section>
+
+  <footer>
+    <div class="footer-shout">
+      <div class="footer-shout-text">
+        You've<br>got this.
+      </div>
+      <div class="footer-shout-mascot">
+        <img src="illo/house_icons.png" alt="2 Homies houses">
+      </div>
+    </div>
+
+    <div class="footer-body">
+      <div class="footer-logo-col">
+        <img src="logo.png" alt="2Homies" style="height:32px;display:block;">
+        <p>Tools for homies with 2 homes.<br>Made by moms. Illustrated by Maxine McCrann.</p>
+      </div>
+      <div class="footer-links-col">
+        <a href="preview.html#shop" class="footer-link-sticker blue">Shop ↗</a>
+        <a href="about.html" class="footer-link-sticker green">About ↗</a>
+        <a href="https://www.instagram.com/hi_there_its_max/" class="footer-link-sticker red">Instagram ↗</a>
+        <a href="#" class="footer-link-sticker">Cart</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 2 Homies. All rights reserved.</span>
+      <span>Powered by Big Cartel</span>
+    </div>
+  </footer>
+
+</body>
+</html>

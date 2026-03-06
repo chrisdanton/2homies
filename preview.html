@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2Homies Calendar — Preview</title>
+
+  <style>
+    @font-face {
+      font-family: 'DakotaRough';
+      src: url('Dakota-Rough-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'GTPlanar';
+      src: url('GT-Planar-Trial-VF.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:   #FFFFFF;
+      --black:   #111111;
+      --blue:    #1B3FDE;
+      --red:     #E63B1F;
+      --green:   #2A8C3F;
+      --yellow:  #F5C200;
+      --purple:  #5B5FC7;
+      --orange:  #FF6B00;
+      --cream:   #FFFDF5;
+      --gray:    #F0EDEA;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'GTPlanar', 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .headline {
+      font-family: 'DakotaRough', sans-serif;
+      font-weight: normal;
+    }
+
+    /* ─── PREVIEW BAR ─── */
+    .dev-bar {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 8px 20px;
+      font-size: 0.75rem;
+      font-family: monospace;
+      letter-spacing: 0.05em;
+    }
+    .dev-bar a { color: var(--yellow); }
+
+    /* ─── ANNOUNCEMENT ─── */
+    .bar {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── NAV ─── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 48px;
+      background: white;
+      border-bottom: 2.5px solid var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 300;
+    }
+    .nav-logo img {
+      height: 32px;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cart {
+      background: var(--black);
+      color: white !important;
+      padding: 9px 22px;
+      border-radius: 100px;
+    }
+    .nav-cart:hover { background: var(--blue) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 58px);
+      border-bottom: 2.5px solid var(--black);
+    }
+
+    .book-left {
+      background: var(--orange);
+      border-right: 2.5px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+    .book-left img {
+      width: 110%;
+      max-width: none;
+      height: auto;
+      display: block;
+    }
+
+    .book-right {
+      background: var(--blue);
+      padding: 100px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .book-right-eyebrow {
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 24px;
+    }
+    .book-right h1 {
+      font-family: 'DakotaRough', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 7rem);
+      color: white;
+      line-height: 0.95;
+      margin-bottom: 36px;
+    }
+    .book-right h1 .yl { color: var(--yellow); }
+    .book-right-sub {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.8);
+      max-width: 380px;
+      margin-bottom: 52px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 1.4rem;
+      padding: 16px 38px;
+      border-radius: 4px;
+      text-decoration: none;
+      width: fit-content;
+      transition: all 0.15s ease;
+      position: relative;
+      z-index: 1;
+      border: 2.5px solid var(--black);
+    }
+    .btn-primary:hover {
+      background: white;
+      transform: translate(-3px, -3px);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--black);
+      border: 2.5px solid var(--black);
+    }
+    .btn-ghost:hover {
+      background: var(--black);
+      color: white;
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee {
+      overflow: hidden;
+      background: var(--yellow);
+      border-top: 2.5px solid var(--black);
+      border-bottom: 2.5px solid var(--black);
+      padding: 13px 0;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 36px;
+      width: max-content;
+      animation: mscroll 24s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes mscroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 1.1rem;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--black);
+    }
+    .marquee-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* ─── STICKER decorations ─── */
+    .sticker {
+      display: inline-block;
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 0.85rem;
+      padding: 5px 14px;
+      border: 2px solid var(--black);
+      border-radius: 6px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+      transform: rotate(var(--r, 0deg));
+      white-space: nowrap;
+    }
+
+    /* ─── SHARED SECTION STYLES ─── */
+    .section-label {
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* ─── INTRO: LIFE CAN BE OVERWHELMING ─── */
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2.5px solid var(--black);
+      min-height: 580px;
+    }
+    .intro-left {
+      background: var(--white);
+      padding: 110px 80px;
+      border-right: 2.5px solid var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .intro-left h2 {
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .intro-left h2 .blue { color: var(--blue); }
+    .intro-left .tagline {
+      font-size: 1.05rem;
+      line-height: 1.72;
+      color: #444;
+      max-width: 400px;
+      margin-top: 24px;
+    }
+    .intro-right {
+      background: var(--white);
+      padding: 110px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .how-it-works-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .how-it-works-list li {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .step-num {
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 2rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .step-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+      padding-top: 4px;
+    }
+    .step-text strong { color: var(--black); }
+
+    /* ─── FULL SPREAD SECTIONS ─── */
+    /* Each section uses an actual book spread image full-width */
+    .spread-section {
+      border-bottom: 2.5px solid var(--black);
+      position: relative;
+    }
+    .spread-section img.spread-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .spread-section .spread-caption {
+      background: white;
+      padding: 80px 100px;
+      border-top: 2.5px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .spread-caption h3 {
+      font-size: 2rem;
+    }
+    .spread-caption p {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #444;
+      max-width: 480px;
+    }
+
+    /* ─── COLOR BLOCK CHAPTER SECTIONS ─── */
+    .chapter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2.5px solid var(--black);
+      min-height: 480px;
+    }
+    .chapter.flip { direction: rtl; }
+    .chapter.flip > * { direction: ltr; }
+
+    .ch-color {
+      padding: 110px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 2.5px solid var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .chapter.flip .ch-color {
+      border-right: none;
+      border-left: 2.5px solid var(--black);
+    }
+    .ch-color h2 {
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      color: white;
+      line-height: 1;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .ch-color p {
+      font-size: 1.1rem;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.85);
+      max-width: 380px;
+      position: relative;
+      z-index: 1;
+    }
+    .ch-color .stickers-scatter {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .ch-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      overflow: hidden;
+    }
+    .ch-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ch-image .placeholder-icon {
+      font-size: 9rem;
+    }
+
+    /* ─── TWO HOMES SPLIT ─── */
+    .two-homes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2.5px solid var(--black);
+      min-height: 400px;
+    }
+    .home-red {
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 2.5px solid var(--black);
+      overflow: hidden;
+    }
+    .home-purple {
+      background: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .two-homes img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ─── SHOP ─── */
+    /* ─── BUY SECTION (single product) ─── */
+    .buy {
+      background: var(--yellow);
+      border-bottom: 2.5px solid var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+    .buy-image {
+      border-right: 2.5px solid var(--black);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px;
+    }
+    .buy-image img {
+      width: 100%;
+      max-width: 500px;
+      background: var(--orange);
+      padding: 24px;
+      border: 2.5px solid var(--black);
+      box-shadow: 10px 10px 0 var(--black);
+      transform: rotate(-1deg);
+    }
+    .buy-details {
+      padding: 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .buy-eyebrow {
+      font-family: 'GTPlanar', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.45);
+      margin-bottom: 12px;
+    }
+    .buy-name {
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .buy-price {
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 36px;
+    }
+    .buy-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue);
+      color: white;
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 1.6rem;
+      padding: 20px 48px;
+      border: 2.5px solid var(--black);
+      border-radius: 4px;
+      text-decoration: none;
+      width: 100%;
+      transition: all 0.15s ease;
+      margin-bottom: 24px;
+      cursor: pointer;
+    }
+    .buy-btn:hover {
+      background: var(--black);
+      transform: translate(-3px, -3px);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+    }
+    .buy-checks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+    .buy-checks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      color: rgba(0,0,0,0.7);
+    }
+    .buy-checks li::before {
+      content: '✓';
+      font-family: 'DakotaRough', sans-serif;
+      color: var(--green);
+      font-weight: 700;
+    }
+    .buy-stickers {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--yellow);
+      border-top: 2.5px solid var(--black);
+      overflow: hidden;
+    }
+    .footer-shout {
+      padding: 100px 80px 0;
+      border-bottom: 2.5px solid var(--black);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .footer-shout-text {
+      font-family: 'DakotaRough', sans-serif;
+      font-size: clamp(5rem, 10vw, 12rem);
+      line-height: 0.9;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+    .footer-shout-mascot {
+      flex-shrink: 0;
+      align-self: flex-end;
+    }
+    .footer-shout-mascot img {
+      width: clamp(120px, 16vw, 220px);
+      display: block;
+    }
+    .footer-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2.5px solid var(--black);
+    }
+    .footer-logo-col {
+      padding: 56px 80px;
+      border-right: 2.5px solid var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .footer-logo-col img { height: 36px; width: auto; mix-blend-mode: multiply; }
+    .footer-logo-col p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(0,0,0,0.55);
+      max-width: 320px;
+    }
+    .footer-links-col {
+      padding: 56px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+    .footer-link-sticker {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'DakotaRough', sans-serif;
+      font-size: 1.1rem;
+      color: var(--black);
+      text-decoration: none;
+      background: white;
+      border: 2px solid var(--black);
+      padding: 8px 20px;
+      border-radius: 6px;
+      width: fit-content;
+      box-shadow: 3px 3px 0 var(--black);
+      transition: all 0.12s ease;
+    }
+    .footer-link-sticker:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--black);
+    }
+    .footer-link-sticker.blue { background: var(--blue); color: white; }
+    .footer-link-sticker.red { background: var(--red); color: white; }
+    .footer-link-sticker.green { background: var(--green); color: white; }
+    .footer-bottom {
+      padding: 16px 64px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: rgba(0,0,0,0.4);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .nav { padding: 14px 24px; }
+      .hero { padding: 28px 20px; min-height: auto; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .book-left { border-right: none; border-bottom: 2.5px solid var(--black); padding: 40px 28px; min-height: 300px; }
+      .book-right { padding: 52px 28px; }
+      .book-left { border-right: 2.5px solid var(--black); border-radius: 6px 6px 0 0; min-height: 220px; }
+      .book-right { border-left: 2.5px solid var(--black); border-radius: 0 0 6px 6px; }
+      .intro, .chapter, .two-homes { grid-template-columns: 1fr; }
+      .chapter.flip { direction: ltr; }
+      .intro-left, .intro-right { padding: 52px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .ch-color { padding: 52px 28px; border-right: none !important; border-left: none !important; border-bottom: 2.5px solid var(--black); }
+      .ch-image { min-height: 260px; }
+      .home-red, .home-purple { min-height: 200px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .spread-section .spread-caption { flex-direction: column; padding: 32px 28px; }
+      .buy { grid-template-columns: 1fr; }
+      .buy-image { border-right: none; border-bottom: 2.5px solid var(--black); padding: 40px 28px; }
+      .buy-details { padding: 48px 28px; }
+      .footer-shout { padding: 40px 28px 0; }
+      .footer-shout-text { font-size: clamp(3.5rem, 12vw, 6rem); }
+      .footer-body { grid-template-columns: 1fr; }
+      .footer-logo-col { padding: 36px 28px; border-right: none; border-bottom: 2.5px solid var(--black); }
+      .footer-links-col { padding: 36px 28px; }
+      .footer-bottom { padding: 16px 28px; flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dev-bar">⚠ PREVIEW — <a href="about.html">About page →</a></div>
+
+  <div class="bar">✦ A book for homies with 2 homes. &nbsp;✦&nbsp; Ships in 3–5 days.</div>
+
+  <header class="nav">
+    <a href="preview.html" class="nav-logo">
+      <img src="logo.png" alt="2Homies" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none;font-family:'DakotaRough',sans-serif;font-size:1.8rem;">2HOMIES</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#" class="nav-cart">Cart (0)</a></li>
+    </ul>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="book-left">
+      <img src="illo/Book-gif-transparent.gif" alt="2 Homies Calendar">
+    </div>
+    <div class="book-right">
+      <p class="book-right-eyebrow">A Yearlong Calendar for Kids with Two Homes</p>
+      <h1>A calendar <span class="yl">both homes</span> will love.</h1>
+      <p class="book-right-sub">For kids who split their time between two homes. Color-code your weeks, track special days, and know that both homes belong to you.</p>
+      <a href="#shop" class="btn-primary">Get the Calendar — $30</a>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ── -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>Part calendar</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Part journal</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Part coloring book</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Part feelings helper</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>100% yours</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Part calendar</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Part journal</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Part coloring book</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Part feelings helper</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>100% yours</span>
+    </div>
+  </div>
+
+  <!-- ── INTRO: LIFE CAN BE OVERWHELMING ── -->
+  <section class="intro">
+    <div class="intro-left">
+      <p class="section-label" style="color:var(--orange);">Life can be overwhelming.</p>
+      <h2>This book<br>can <span class="blue">help.</span></h2>
+      <p class="tagline">This isn't your typical calendar. It's made for kids who split their time between two homes — a place to color-code your weeks, track special days, and make sense of all the moving parts.</p>
+    </div>
+    <div class="intro-right">
+      <ol class="how-it-works-list">
+        <li>
+          <span class="step-num">1</span>
+          <span class="step-text"><strong>Color code your days.</strong> Home 1, Home 2. Both belong to you.</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span class="step-text"><strong>Add fun things:</strong> Yes Days, sleepovers. Write them in or use the stickers!</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span class="step-text"><strong>Don't forget the important stuff:</strong> haircuts, doctor visits, you name it.</span>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <span class="step-text"><strong>Use the 'tools' pages</strong> to help with big feelings.</span>
+        </li>
+        <li>
+          <span class="step-num">5</span>
+          <span class="step-text"><strong>Have fun!!!</strong> There are lots of spaces to just get creative.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── HOW TO USE: FULL SPREAD ── -->
+  <section class="spread-section">
+    <img class="spread-img" src="illo/how to mockup - green.png" alt="How to use this calendar">
+  </section>
+
+  <!-- ── COLOR-CODE YOUR WEEKS ── -->
+  <section style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2.5px solid var(--black);min-height:360px;">
+    <div style="background:var(--yellow);padding:72px 64px;border-right:2.5px solid var(--black);display:flex;flex-direction:column;justify-content:center;">
+      <p class="section-label" style="color:rgba(0,0,0,0.45);">Your weeks, your way</p>
+      <h2 style="font-size:clamp(3rem,5vw,5rem);line-height:1;color:var(--black);margin-bottom:20px;">Color-code<br>your weeks.</h2>
+      <p style="font-size:1.05rem;line-height:1.7;color:rgba(0,0,0,0.65);max-width:380px;">Each row is yours to color. Green for Mom's, orange for Dad's — whatever feels right. Mistakes are made. Plans change. It happens. It's ok.</p>
+      <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+        <span class="sticker" style="background:white;--r:-3deg;">🏠 Home 1</span>
+        <span class="sticker" style="background:var(--red);color:white;border-color:var(--black);--r:2deg;">🏠 Home 2</span>
+      </div>
+    </div>
+    <div style="background:var(--black);padding:72px 64px;display:flex;flex-direction:column;justify-content:center;gap:20px;">
+      <p style="font-family:'DakotaRough',sans-serif;font-size:clamp(2rem,3.5vw,3.5rem);color:white;line-height:1;">"Mistakes are made. Plans change. It happens. It's ok."</p>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;">— From the calendar</p>
+    </div>
+  </section>
+
+  <!-- ── NAME YOUR FEELINGS ── -->
+  <section class="spread-section">
+    <img class="spread-img" src="illo/feelings mockup - blue.png" alt="Name your feelings to tame your feelings">
+    <div class="spread-caption">
+      <h3>Name your feelings<br>to tame your feelings.</h3>
+      <p>Sometimes big feelings sneak up on you. The 2 Homies feelings wheel gives kids the words to name what's going on inside — happy, anxious, loved, mad, sad, scared — and a path through it.</p>
+    </div>
+  </section>
+
+  <!-- ── INSPIRATION: LIGHT BULBS ── -->
+  <section class="chapter flip">
+    <div class="ch-color" style="background:white;">
+      <p class="section-label" style="color:var(--black);opacity:0.5;">Packed with inspiration</p>
+      <h2 style="color:var(--black);">Name four things that inspire you.</h2>
+      <p style="color:rgba(0,0,0,0.7);">The 2 Homies calendar is packed with fun, age-appropriate prompts that help kids process feelings, spark creativity, and celebrate what's great about their life — both of them.</p>
+      <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;">
+        <span class="sticker" style="background:white;--r:-4deg;">💡 Inspired</span>
+        <span class="sticker" style="background:var(--orange);color:white;border-color:var(--black);--r:3deg;">✨ Creative</span>
+        <span class="sticker" style="background:var(--blue);color:white;border-color:var(--black);--r:-2deg;">🎉 Fun</span>
+      </div>
+    </div>
+    <div class="ch-image">
+      <img src="illo/4 things that inspire you.jpg" alt="Light bulbs illustration">
+    </div>
+  </section>
+
+  <!-- ── STAR BREATHING ── -->
+  <section class="spread-section">
+    <img class="spread-img" src="illo/star breathing mockup - yellow.png" alt="Star breathing exercise">
+    <div class="spread-caption" style="background:var(--purple);">
+      <h3 style="color:white;">When it gets big,<br>breathe through it.</h3>
+      <p style="color:rgba(255,255,255,0.8);">Star breathing is one of the tools inside the 2 Homies calendar. When emotions feel overwhelming, trace the star and breathe. It's a superpower kids can use anywhere, any time.</p>
+    </div>
+  </section>
+
+  <!-- ── THINGS I LOVE ABOUT ___'s HOUSE ── -->
+  <section class="two-homes">
+    <div class="home-red">
+      <img src="illo/2 homes mockup - yellow.png" alt="Things I love about both homes" style="object-fit:cover;width:100%;height:100%;">
+    </div>
+    <div class="home-purple" style="background:white;padding:100px 80px;flex-direction:column;align-items:flex-start;justify-content:center;">
+      <p class="section-label" style="color:rgba(0,0,0,0.4);">Both homes, both loved</p>
+      <h2 style="color:var(--black);font-size:clamp(2.5rem,4vw,4.5rem);">Things I love about ___'s house.</h2>
+      <p style="color:rgba(0,0,0,0.65);font-size:1.05rem;line-height:1.7;margin-top:20px;max-width:380px;">Space inside the calendar to fill in and celebrate both homes — because both of them are yours, and both of them matter.</p>
+    </div>
+  </section>
+
+  <!-- ── BUY ── -->
+  <section class="buy" id="shop">
+    <div class="buy-image">
+      <img src="illo/Cover mockup transparent.png" alt="2 Homies Calendar">
+    </div>
+    <div class="buy-details">
+      <p class="buy-eyebrow">A Yearlong Calendar for Kids with Two Homes</p>
+      <h2 class="buy-name">2 Homies Calendar</h2>
+      <div class="buy-price">$30</div>
+
+      <a href="#" class="buy-btn">Add to Cart</a>
+
+      <ul class="buy-checks">
+        <li>Starts any time — undated pages</li>
+        <li>Full sticker sheet included</li>
+        <li>Feelings wheel + star breathing tools inside</li>
+        <li>Made by moms, illustrated by Maxine McCrann</li>
+        <li>Ships in 3–5 business days</li>
+      </ul>
+
+      <div class="buy-stickers" style="align-items:center;gap:20px;">
+        <img src="illo/sticker-gif.gif" alt="Stickers" style="width:120px;height:120px;object-fit:contain;">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <span class="sticker" style="background:var(--blue);color:white;border-color:var(--black);--r:-3deg;">Calendar</span>
+          <span class="sticker" style="background:var(--red);color:white;border-color:var(--black);--r:1deg;">Journal</span>
+          <span class="sticker" style="background:var(--orange);color:white;border-color:var(--black);--r:-2deg;">Activities</span>
+          <span class="sticker" style="background:var(--green);color:white;border-color:var(--black);--r:2deg;">Stickers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <!-- Big shout + mascot -->
+    <div class="footer-shout">
+      <div class="footer-shout-text">
+        You've<br>got this.
+      </div>
+      <div class="footer-shout-mascot">
+        <img src="illo/house_icons.png" alt="2 Homies houses">
+      </div>
+    </div>
+
+    <!-- Logo + links -->
+    <div class="footer-body">
+      <div class="footer-logo-col">
+        <img src="logo.png" alt="2Homies" style="height:32px;display:block;">
+        <p>Tools for homies with 2 homes.<br>Made by moms. Illustrated by Maxine McCrann.</p>
+      </div>
+      <div class="footer-links-col">
+        <a href="#shop" class="footer-link-sticker blue">Shop ↗</a>
+        <a href="about.html" class="footer-link-sticker green">About ↗</a>
+        <a href="https://www.instagram.com/hi_there_its_max/" class="footer-link-sticker red">Instagram ↗</a>
+        <a href="#" class="footer-link-sticker">Cart</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 2 Homies. All rights reserved.</span>
+      <span>Powered by Big Cartel</span>
+    </div>
+  </footer>
+
+</body>
+</html>
