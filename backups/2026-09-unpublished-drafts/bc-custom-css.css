@@ -1,0 +1,46 @@
+/* Mirror of Big Cartel → Design → Code → Custom styling → Custom CSS
+   (the "Override your template's default styles" box).
+   This is a SEPARATE store from bc-css.css (the theme CSS). */
+
+/* About hero — pin stickers to the section + spread them out */
+.about-hero { position: relative; }
+
+/* Kiss-cut white border hugging each sticker's shape (no drop shadow) */
+.about-hero > .hero-sticker {
+  filter:
+    drop-shadow(2px 0 0 #fff)  drop-shadow(-2px 0 0 #fff)
+    drop-shadow(0 2px 0 #fff)  drop-shadow(0 -2px 0 #fff)
+    drop-shadow(1.5px 1.5px 0 #fff)  drop-shadow(-1.5px 1.5px 0 #fff)
+    drop-shadow(1.5px -1.5px 0 #fff) drop-shadow(-1.5px -1.5px 0 #fff);
+}
+
+.about-hero > .hero-sticker:nth-of-type(1) { top: 6%  !important; right: 6%  !important; }
+.about-hero > .hero-sticker:nth-of-type(2) { bottom: 8% !important; right: 8% !important; }
+.about-hero > .hero-sticker:nth-of-type(3) { top: 5%  !important; left: 37% !important; }
+.about-hero > .hero-sticker:nth-of-type(4) { bottom: 6% !important; left: 44% !important; }
+.about-hero > .hero-sticker:nth-of-type(5) { top: 16% !important; right: 28% !important; }
+
+/* About hero — yellow header with black text (was green/white) */
+.about-hero { background: #F5C200 !important; }
+.about-hero-copy h1 { color: #111 !important; }
+.about-hero-copy p { color: rgba(0,0,0,0.82) !important; }
+.about-hero .section-label { color: rgba(0,0,0,0.55) !important; }
+
+/* Origin panel now holds a photograph with its own yellow ground, so let it
+   run flush to the panel edges instead of floating inside a coloured box. */
+.origin-image { background: #FED12E !important; padding: 0 !important; }
+.origin-image img { width: 100% !important; max-width: 100% !important; display: block; }
+
+/* Same for the buy block: the orange card + hard shadow was built for the old
+   cut-out PNG. The photograph fills the panel on its own. */
+.buy-image { padding: 0 !important; background: #FED12E !important; }
+.buy-image img {
+  width: 100% !important; max-width: 100% !important; display: block;
+  background: none !important; padding: 0 !important;
+  border: none !important; box-shadow: none !important;
+}
+
+/* Line-weight fix: every section already carries its own 2.5px border-bottom,
+   and the footer added a 2.5px border-top on top of it. That junction was
+   rendering at 5px, double every other rule on the site. Drop the duplicate. */
+footer { border-top: none !important; }

@@ -1,0 +1,30 @@
+/* About hero — pin stickers to the section + spread them out */
+.about-hero { position: relative; }
+
+/* Kiss-cut white border hugging each sticker's shape (no drop shadow) */
+.about-hero > .hero-sticker {
+  filter:
+    drop-shadow(2px 0 0 #fff)  drop-shadow(-2px 0 0 #fff)
+    drop-shadow(0 2px 0 #fff)  drop-shadow(0 -2px 0 #fff)
+    drop-shadow(1.5px 1.5px 0 #fff)  drop-shadow(-1.5px 1.5px 0 #fff)
+    drop-shadow(1.5px -1.5px 0 #fff) drop-shadow(-1.5px -1.5px 0 #fff);
+}
+
+.about-hero > .hero-sticker:nth-of-type(1) { top: 6%  !important; right: 6%  !important; }
+.about-hero > .hero-sticker:nth-of-type(2) { bottom: 8% !important; right: 8% !important; }
+.about-hero > .hero-sticker:nth-of-type(3) { top: 5%  !important; left: 37% !important; }
+.about-hero > .hero-sticker:nth-of-type(4) { bottom: 6% !important; left: 44% !important; }
+.about-hero > .hero-sticker:nth-of-type(5) { top: 16% !important; right: 28% !important; }
+
+/* About hero — yellow header with black text (was green/white) */
+.about-hero { background: #F5C200 !important; }
+.about-hero-copy h1 { color: #111 !important; }
+.about-hero-copy p { color: rgba(0,0,0,0.82) !important; }
+.about-hero .section-label { color: rgba(0,0,0,0.55) !important; }
+
+/* Swap the box directly below (origin image) to green so the two yellows don't stack */
+.origin-image { background: #2A8C3F !important; }
+
+/* Temporarily hide the homepage feelings spread — its mockup photo has the DRAFT
+   gibberish wheel. Remove this rule once a mockup from the final book replaces it. */
+.spread-section:has(img[src*="feelings mockup"]) { display: none !important; }
