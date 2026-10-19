@@ -91,7 +91,7 @@ assert '__' not in home.replace('__nh', '')
 lay = open(REPO + '/backups/2026-10-15-live-site/layout-template.html').read()
 old_title = re.search(r'<title>.*?</title>', lay).group(0)
 lay = lay.replace(old_title, old_title.replace("{% if current_page == 'home' %}2 Homies Calendar",
-                  "{% if current_page == 'home' %}2Homies | Calendar &amp; Workbook for Kids with Two Homes"))
+                  "{% if current_page == 'home' %}2Homies | Calendar &amp; Workbook for Kids with Two Homes").replace("{% else %}2 Homies Calendar{% endif %}", "{% else %}2Homies | Calendar &amp; Workbook for Kids with Two Homes{% endif %}"))
 lay = lay.replace('\n  </style>\n</head>', '\n\n/* ===== 2026-10 simpler homepage (all classes start with nh-) ===== */\n' + css.strip() + '\n  </style>\n</head>')
 
 nav_old = lay[lay.find('  <div class="bar">'):lay.find('  {{ page_content }}')]
