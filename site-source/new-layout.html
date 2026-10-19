@@ -910,6 +910,9 @@ footer {
 }
 
 /* ===== 2026-10 simpler homepage (all classes start with nh-) ===== */
+/* The GT Planar trial font has no real "$" glyph, so borrow just that character from a system font. */
+@font-face { font-family: "NHDollar"; src: local("Helvetica Neue"), local("HelveticaNeue"), local("Arial"), local("ArialMT"), local("Roboto"), local("Roboto-Regular"); unicode-range: U+0024; }
+
 /* Layout: one product, one path. Hero → why → peek → story → buy → questions. Bands alternate brand color and paper. */
 :root {
   --nh-sun: #FED12E;      /* matches the yellow in the product photos */
@@ -923,7 +926,7 @@ footer {
   --nh-purple: #5B5FC7;
   --nh-orange: #FF5F1F;
   --nh-display: "DakotaRough", "Arial Black", sans-serif;
-  --nh-body: "GTPlanar", "Helvetica Neue", Arial, sans-serif;
+  --nh-body: "NHDollar", "GTPlanar", "Helvetica Neue", Arial, sans-serif;
   color-scheme: light;
 }
 .nh { background: var(--nh-paper); color: var(--nh-ink); font-family: var(--nh-body); font-size: 17px; line-height: 1.6; }
@@ -951,6 +954,7 @@ footer {
 
 /* Nav */
 .nh-nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--nh-paper); border-bottom: 2.5px solid var(--nh-ink); }
+.nh-nav, .nh-footer { font-family: var(--nh-body); }
 .nh-nav .nh-wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 14px; }
 .nh-nav img { height: 28px; width: auto; }
 .nh-nav-links { display: flex; gap: 28px; font-size: 0.95rem; font-weight: 600; }

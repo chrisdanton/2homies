@@ -6,6 +6,9 @@
 @font-face { font-family: "DakotaRough"; src: url(data:font/otf;base64,__DAKOTA__) format("opentype"); font-display: swap; }
 @font-face { font-family: "GTPlanar"; src: url(data:font/ttf;base64,__PLANAR__) format("truetype"); font-weight: 100 900; font-display: swap; }
 
+/* The GT Planar trial font has no real "$" glyph, so borrow just that character from a system font. */
+@font-face { font-family: "NHDollar"; src: local("Helvetica Neue"), local("HelveticaNeue"), local("Arial"), local("ArialMT"), local("Roboto"), local("Roboto-Regular"); unicode-range: U+0024; }
+
 /* Layout: one product, one path. Hero → why → peek → story → buy → questions. Bands alternate brand color and paper. */
 :root {
   --sun: #FED12E;      /* matches the yellow in the product photos */
@@ -19,7 +22,7 @@
   --purple: #5B5FC7;
   --orange: #FF5F1F;
   --display: "DakotaRough", "Arial Black", sans-serif;
-  --body: "GTPlanar", "Helvetica Neue", Arial, sans-serif;
+  --body: "NHDollar", "GTPlanar", "Helvetica Neue", Arial, sans-serif;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
@@ -49,6 +52,7 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 4.6
 
 /* Nav */
 .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); border-bottom: 2.5px solid var(--ink); }
+.nav, footer { font-family: var(--body); }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 14px; }
 .nav img { height: 28px; width: auto; }
 .nav-links { display: flex; gap: 28px; font-size: 0.95rem; font-weight: 600; }

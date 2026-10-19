@@ -9,7 +9,7 @@ css = re.search(r'<style>(.*?)</style>', src, re.S).group(1)
 main = re.search(r'<main id="top">(.*?)</main>', src, re.S).group(1)
 
 # ---- CSS ----
-css = re.sub(r'@font-face \{[^}]*\}\n', '', css)          # layout already loads both fonts
+css = re.sub(r'@font-face \{[^}]*data:font[^}]*\}\n', '', css)          # layout already loads both fonts
 css = re.sub(r'/\* Preview banner.*?\n\.preview-tag \{[^}]*\}\n', '', css, flags=re.S)
 
 classes = set()
@@ -39,6 +39,7 @@ fixes = [
     ('footer { background: var(--nh-ink);', '.nh-footer { border-top: 0; background: var(--nh-ink);'),
     ('footer .nh-wrap', '.nh-footer .nh-wrap'),
     ('footer img', '.nh-footer img'),
+    ('.nh-nav, footer { font-family', '.nh-nav, .nh-footer { font-family'),
     ('footer .nh-say', '.nh-footer .nh-say'),
     ('footer nav a:hover', '.nh-footer nav a:hover'),
     ('footer nav a {', '.nh-footer nav a {'),
@@ -87,7 +88,7 @@ home = '<div class="nh">\n' + main.strip('\n') + '\n</div>\n\n<script type="appl
 assert '__' not in home.replace('__nh', '')
 
 # ---- Layout ----
-lay = open(REPO + '/bc-layout.html').read()
+lay = open(REPO + '/backups/2026-10-15-live-site/layout-template.html').read()
 old_title = re.search(r'<title>.*?</title>', lay).group(0)
 lay = lay.replace(old_title, old_title.replace("{% if current_page == 'home' %}2 Homies Calendar",
                   "{% if current_page == 'home' %}2Homies | Calendar &amp; Workbook for Kids with Two Homes"))
