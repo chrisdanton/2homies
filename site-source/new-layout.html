@@ -1081,7 +1081,10 @@ footer {
 .nh-story .nh-wrap { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr); }
 .nh-story img { width: 100%; min-width: 0; }
 @media (max-width: 900px) { .nh-story .nh-wrap { grid-template-columns: minmax(0, 1fr); } }
-.nh-footer { padding-block: 48px 0; overflow: hidden; }
+.nh-footer { padding-block: 48px 0; overflow: hidden; background: var(--nh-paper); color: var(--nh-ink); border-top: 2.5px solid var(--nh-ink); }
+.nh-footer img { filter: none; }
+.nh-footer nav a { opacity: 1; }
+.nh-footer-legal { opacity: 0.7; }
 .nh-footer-legal { margin-top: 16px; }
 .nh-footer img.nh-footer-art { display: block; height: auto; width: 100%; max-width: 100%; filter: none; margin: 44px 0 -1.6%; }
 .nh-footer .nh-footer-artwrap { display: block; }
@@ -1130,7 +1133,7 @@ footer {
       </nav>
     </div>
     <div class="nh-wrap nh-footer-legal">&copy; 2026 2Homies. Made by moms. Illustrated by Maxine McCrann.</div>
-    <div class="nh-wrap nh-footer-artwrap"><img class="nh-footer-art" src="https://chrisdanton.github.io/2homies/illo/site/letsgo-footer.webp" width="1800" height="587" alt="Let's go!"></div>
+    <div class="nh-wrap nh-footer-artwrap"><img class="nh-footer-art" src="https://chrisdanton.github.io/2homies/illo/site/letsgo-footer.webp?v=2" width="1800" height="587" alt="Let's go!"></div>
   </footer>
 
   <script src="{{ 'api' | theme_js_url }}"></script>
