@@ -1083,13 +1083,13 @@ footer {
 @media (max-width: 900px) { .nh-story .nh-wrap { grid-template-columns: minmax(0, 1fr); } }
 .nh-footer { padding-block: 48px 0; overflow: hidden; }
 .nh-footer-legal { margin-top: 16px; }
-.nh-footer-art { display: block; width: 104%; max-width: none; margin: 44px 0 -2.2% -2%; }
+.nh-footer img.nh-footer-art { display: block; height: auto; width: 100%; max-width: 100%; filter: none; margin: 44px 0 -1.6%; }
+.nh-footer .nh-footer-artwrap { display: block; }
 @media (max-width: 820px) {
   .nh-footer .nh-wrap { display: block; }
-  .nh-footer .nh-say { margin: 18px 0 0; }
   .nh-footer nav { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 1rem; margin-top: 22px; }
   .nh-footer-legal { margin-top: 24px; }
-  .nh-footer-art { margin-top: 30px; }
+  .nh-footer img.nh-footer-art { margin-top: 30px; }
 }
   </style>
 </head>
@@ -1120,7 +1120,6 @@ footer {
   <footer class="nh-footer">
     <div class="nh-wrap">
       <img src="https://chrisdanton.github.io/2homies/logo.png" alt="2Homies">
-      <p class="nh-say">You've got this.</p>
       <nav aria-label="Footer">
         <a href="/about">Our story</a>
         <a href="/#questions">Good questions</a>
@@ -1131,7 +1130,7 @@ footer {
       </nav>
     </div>
     <div class="nh-wrap nh-footer-legal">&copy; 2026 2Homies. Made by moms. Illustrated by Maxine McCrann.</div>
-    <img class="nh-footer-art" src="https://chrisdanton.github.io/2homies/illo/site/letsgo-footer.webp" width="1800" height="587" alt="Let's go!">
+    <div class="nh-wrap nh-footer-artwrap"><img class="nh-footer-art" src="https://chrisdanton.github.io/2homies/illo/site/letsgo-footer.webp" width="1800" height="587" alt="Let's go!"></div>
   </footer>
 
   <script src="{{ 'api' | theme_js_url }}"></script>

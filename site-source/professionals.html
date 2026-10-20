@@ -1,0 +1,185 @@
+<style>
+.nh-pro-fits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; text-align: left; }
+.nh-pro-fit { border: 2.5px solid var(--nh-ink); border-radius: 10px; padding: 26px 24px 28px; background: #fff; }
+.nh-pro-fit h3 { font-size: 1.25rem; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+.nh-pro-fit p { margin: 0; color: var(--nh-ink-soft); font-size: 0.98rem; }
+.nh-pro-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; color: #fff; margin-bottom: 14px; }
+.nh-pro-packs { background: var(--nh-sun); border-block: 2.5px solid var(--nh-ink); }
+.nh-pro-packgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 44px; }
+@media (max-width: 1100px) and (min-width: 901px) { .nh-pro-packgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.nh-pro-pack { background: var(--nh-paper); border: 2.5px solid var(--nh-ink); border-radius: 10px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+.nh-pro-pack h3 { font-size: 1.3rem; font-weight: 700; }
+.nh-pro-pack .nh-price { font-size: 2.6rem; margin-top: 4px; }
+.nh-pro-pack p { margin: 0; color: var(--nh-ink-soft); font-size: 0.98rem; }
+.nh-pro-pack .nh-btn { margin-top: auto; align-self: flex-start; }
+.nh-pro-each { font-size: 0.9rem; font-weight: 700; color: var(--nh-ink); }
+.nh-pro-pack .nh-pro-save { margin: 0; display: inline-flex; align-self: flex-start; gap: 8px; align-items: center; font-weight: 700; font-size: 1rem; background: var(--nh-sun); color: var(--nh-ink); border: 2px solid var(--nh-ink); padding: 4px 12px; border-radius: 999px; }
+.nh-pro-was { text-decoration: line-through; font-weight: 500; color: var(--nh-ink-soft); }
+.nh .nh-btn-buy, .nh-nav .nh-btn-buy { color: #fff; }
+.nh-pro-inside { padding-top: 0; }
+.nh-pro-carousel { display: flex; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; margin-top: 44px; padding: 0 max(20px, calc((100vw - 1000px) / 2)) 8px; scrollbar-width: none; }
+.nh-pro-carousel::-webkit-scrollbar { display: none; }
+.nh-pro-slide { flex: 0 0 min(1000px, 86vw); scroll-snap-align: center; margin: 0; }
+.nh-pro-slide img { width: 100%; height: auto; border: 2.5px solid var(--nh-ink); border-radius: 12px; }
+.nh-pro-slide figcaption { padding: 20px 4px 0; text-align: left; }
+.nh-pro-slide h3 { font-family: var(--nh-display); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.05; }
+.nh-pro-slide p { margin: 8px 0 0; font-size: 1.12rem; color: var(--nh-ink-soft); }
+.nh-pro-controls { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 28px; }
+.nh-pro-arrow { width: 52px; height: 52px; border-radius: 50%; border: 2.5px solid var(--nh-ink); background: var(--nh-sun); color: var(--nh-ink); display: grid; place-items: center; padding: 0; cursor: pointer; }
+.nh-pro-arrow[disabled] { opacity: 0.35; cursor: default; }
+.nh-pro-arrow { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-size: 1.5rem; font-weight: 700; line-height: 1; }
+@media (hover: hover) { .nh-pro-arrow:not([disabled]):hover { background: var(--nh-ink); color: var(--nh-paper); } }
+.nh-story .nh-wrap { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr); }
+.nh-story .nh-wrap > img { width: 100%; min-width: 0; }
+@media (max-width: 900px) { .nh-story .nh-wrap { grid-template-columns: minmax(0, 1fr); } }
+.nh-pro-count { font-weight: 700; min-width: 4.5em; text-align: center; font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) { .nh-pro-carousel { scroll-behavior: auto; } }
+.nh-pro-note { margin-top: 36px; font-size: 0.95rem; max-width: 70ch; }
+@media (max-width: 900px) { .nh-pro-fits, .nh-pro-packgrid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; } }
+.nh-pro-letter .nh-lede { margin-top: 14px; }
+.nh-pro-sign { margin: 16px 0 0; font-weight: 700; font-size: 0.95rem; }
+</style>
+
+<div class="nh">
+  <section class="nh-hero">
+    <div class="nh-wrap">
+      <div class="nh-hero-text">
+        <p class="nh-eyebrow">For therapists, attorneys, mediators and school counselors</p>
+        <h1>Two homes.<span>Both theirs.</span></h1>
+        <div class="nh-pro-letter">
+          <p class="nh-lede">Separation and divorce are tricky for adults. They're tricky for kids too. Emotionally. Time-management wise. Logically.</p>
+          <p class="nh-lede">That's why we made the 2Homies Calendar and Workbook. My own personal experience showed me kids want agency. This is that. And made fun.</p>
+          <p class="nh-lede">With a calendar they can understand. Tools to help them through. And positivity all along the way.</p>
+          <p class="nh-pro-sign">Kirsten Ludwig, mom and co-founder</p>
+        </div>
+        <div class="nh-btns">
+          <a class="nh-btn nh-btn-buy" href="https://www.2homies.com/contact">Request a free copy</a>
+          <a class="nh-btn nh-btn-ghost" href="#packs">See practice packs</a>
+        </div>
+        <p class="nh-hero-note">For kids ages 6 to 14. Undated, so families can start any day of the year.</p>
+      </div>
+      <div class="nh-hero-img">
+        <img src="https://chrisdanton.github.io/2homies/illo/site/hero.jpg" width="1600" height="1185" alt="The 2Homies Calendar cover: a spiral-bound book with a yellow coil, covered in colorful hand-drawn doodles of houses, keys and a calendar grid">
+      </div>
+    </div>
+  </section>
+
+  <section class="nh-band">
+    <div class="nh-wrap nh-center">
+      <p class="nh-eyebrow" style="color: var(--nh-red);">How it fits your work</p>
+      <h2>Something just for the kids.</h2>
+      <p class="nh-lede">Most of a separation is about the grown-ups. 2Homies gives kids a calendar they can read themselves, and pages that make room for feelings.</p>
+      <div class="nh-pro-fits">
+        <article class="nh-pro-fit">
+          <span class="nh-pro-tag" style="background: var(--nh-blue);">Attorneys and mediators</span>
+          <h3>A thoughtful gift for clients with kids.</h3>
+          <p>Hand it over when the parenting plan is set. Kids color-code each home and see the whole week at once, whatever the schedule: week on, week off, 2-2-3 or every other weekend.</p>
+        </article>
+        <article class="nh-pro-fit">
+          <span class="nh-pro-tag" style="background: var(--nh-green);">Therapists and counselors</span>
+          <h3>Tools kids can use between sessions.</h3>
+          <p>A feelings wheel and star breathing give kids words for what's going on inside, and a way to calm down on their own. The feelings pages belong to the kid, so they decide what to share.</p>
+        </article>
+        <article class="nh-pro-fit">
+          <span class="nh-pro-tag" style="background: var(--nh-orange);">Co-parenting classes and coaches</span>
+          <h3>One book that travels between homes.</h3>
+          <p>The plan goes where the kid goes, so both homes see the same week. There's even a page that says "If you find this book, please contact one of my adults."</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="nh-band nh-pro-inside">
+    <div class="nh-wrap nh-center">
+      <p class="nh-eyebrow" style="color: var(--nh-red);">Peek inside</p>
+      <h2>What's in the book.</h2>
+    </div>
+    <div class="nh-pro-carousel" id="nh-pro-carousel" tabindex="0" aria-label="Pages from the book. Swipe or use the arrows.">
+        <figure class="nh-pro-slide" id="peek-1">
+          <img src="https://chrisdanton.github.io/2homies/illo/site/pro-1-calendar.jpg?v=3" width="1600" height="800" alt="A weekly calendar spread from Sunday to Saturday with a note to color code your two homes" loading="lazy">
+          <figcaption><h3>Color code both homes.</h3><p>Kids pick a color for each home and see the whole week at once.</p></figcaption>
+        </figure>
+        <figure class="nh-pro-slide" id="peek-2">
+          <img src="https://chrisdanton.github.io/2homies/illo/site/pro-2-star.jpg?v=3" width="1600" height="800" alt="The star breathing spread: five steps on the left page and a star to trace on the right" loading="lazy">
+          <figcaption><h3>Tools for big feelings.</h3><p>A feelings wheel and star breathing give kids words for what's going on inside, and a way to calm down on their own.</p></figcaption>
+        </figure>
+        <figure class="nh-pro-slide" id="peek-3">
+          <img src="https://chrisdanton.github.io/2homies/illo/site/pro-3-inspire.jpg?v=3" width="1600" height="800" alt="A yellow spread with hand-drawn light bulbs and the prompt name four things that inspire you" loading="lazy">
+          <figcaption><h3>A world that's their own.</h3><p>Prompts, doodle space and a full sticker sheet.</p></figcaption>
+        </figure>
+    </div>
+    <div class="nh-pro-controls">
+      <button type="button" class="nh-pro-arrow" data-dir="-1" aria-label="Previous page">&larr;</button>
+      <span class="nh-pro-count" id="nh-pro-count" aria-live="polite">1 of 3</span>
+      <button type="button" class="nh-pro-arrow" data-dir="1" aria-label="Next page">&rarr;</button>
+    </div>
+    <script>
+    (function(){
+      var c=document.getElementById('nh-pro-carousel'), n=document.getElementById('nh-pro-count');
+      if(!c) return; var slides=c.querySelectorAll('.nh-pro-slide');
+      function cur(){ var m=c.scrollLeft+c.clientWidth/2, best=0; slides.forEach(function(s,i){ if(s.offsetLeft<=m) best=i; }); return best; }
+      function go(i){ i=Math.max(0,Math.min(slides.length-1,i)); c.scrollTo({left:slides[i].offsetLeft-(c.clientWidth-slides[i].clientWidth)/2,behavior:'smooth'}); }
+      document.querySelectorAll('.nh-pro-arrow').forEach(function(b){ b.addEventListener('click',function(){ go(cur()+Number(b.getAttribute('data-dir'))); }); });
+      var arrows=document.querySelectorAll('.nh-pro-arrow');
+      function upd(){ var i=cur(); n.textContent=(i+1)+' of '+slides.length; arrows[0].disabled=(i===0); arrows[1].disabled=(i===slides.length-1); }
+      c.addEventListener('scroll',upd,{passive:true}); upd();
+    })();
+    </script>
+  </section>
+
+  <section class="nh-band nh-pro-packs" id="packs">
+    <div class="nh-wrap nh-center">
+      <p class="nh-eyebrow">Practice packs</p>
+      <h2>Keep a few on hand.</h2>
+      <p class="nh-lede" style="color: var(--nh-ink);">For offices that give 2Homies to families or keep copies in the waiting room. Free U.S. shipping on every pack.</p>
+    </div>
+    <div class="nh-wrap">
+      <div class="nh-pro-packgrid">
+        <div class="nh-pro-pack">
+          <h3>Free copy</h3>
+          <div class="nh-price">Free</div>
+          <p class="nh-pro-each">For professionals who work with families</p>
+          <p>See it for yourself. We'll include handouts for families with a discount code.</p>
+          <a class="nh-btn nh-btn-buy" href="https://www.2homies.com/contact">Request a copy</a>
+        </div>
+        <div class="nh-pro-pack">
+          <h3>5-pack</h3>
+          <div class="nh-price">$150</div>
+          <p class="nh-pro-save"><span class="nh-pro-was">$175</span> Save $25</p>
+          <p class="nh-pro-each">$30 per book</p>
+          <p>Five books and a stack of family handouts.</p>
+          <a class="nh-btn nh-btn-buy" href="https://www.2homies.com/contact">Order a 5-pack</a>
+        </div>
+        <div class="nh-pro-pack">
+          <h3>10-pack</h3>
+          <div class="nh-price">$250</div>
+          <p class="nh-pro-save"><span class="nh-pro-was">$350</span> Save $100</p>
+          <p class="nh-pro-each">$25 per book</p>
+          <p>Ten books and a stack of family handouts.</p>
+          <a class="nh-btn nh-btn-buy" href="https://www.2homies.com/contact">Order a 10-pack</a>
+        </div>
+        <div class="nh-pro-pack">
+          <h3>25 or more</h3>
+          <div class="nh-price">Let's talk</div>
+          <p class="nh-pro-each">For classes, groups and larger practices</p>
+          <p>A book for every family in a co-parenting class, or copies for a whole team. Tell us how many and we'll send a price.</p>
+          <a class="nh-btn nh-btn-buy" href="https://www.2homies.com/contact">Ask for a quote</a>
+        </div>
+      </div>
+      <p class="nh-pro-note nh-center" style="margin-inline: auto;">2Homies is a helpful everyday tool, but it isn't therapy.<br>Many families use it alongside the support you provide.</p>
+    </div>
+  </section>
+
+  <section class="nh-band nh-story">
+    <div class="nh-wrap">
+      <img src="https://chrisdanton.github.io/2homies/illo/site/kirsten-sailor.jpg" alt="Photo-booth strips of Kirsten and her daughter Sailor laughing, hugging and making faces" loading="lazy">
+      <div class="nh-story-text">
+        <p class="nh-eyebrow" style="color: var(--nh-sun);">Our story</p>
+        <h2>Made because nothing else existed.</h2>
+        <p class="nh-lede">Kirsten's daughter Sailor was getting overwhelmed. Who's picking her up from gymnastics? When is she switching homes? She was too young for a phone, and regular calendars weren't made for her life.</p>
+        <p class="nh-lede">So Kirsten and her friend Chris made one that was. Maxine McCrann drew every page.</p>
+        <a class="nh-link-arrow" href="https://www.2homies.com/#peek">Take a peek inside →</a>
+      </div>
+    </div>
+  </section>
+</div>
