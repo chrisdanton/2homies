@@ -14,18 +14,25 @@ body { width: 8.5in; height: 11in; font-family: "GTPlanar", "Helvetica Neue", Ar
 .page { width: 8.5in; height: 11in; display: flex; flex-direction: column; overflow: hidden; }
 .stk { position: absolute; height: auto; }
 
-.top { position: relative; background: var(--sun); border-bottom: 2.5px solid var(--ink); padding: 0.36in 0.7in 0.1in; text-align: center; }
-.logo { height: 0.66in; width: auto; display: block; margin: 0 auto 0.22in; }
+.top { position: relative; background: var(--sun); border-bottom: 2.5px solid var(--ink); padding: 0.32in 0.7in 0.06in; text-align: center; }
+.logo { width: 2.2in; height: auto; display: block; margin: 0 auto 0.16in; }
 h1 { font-family: "DakotaRough", "Arial Black", sans-serif; font-weight: 400; font-size: 38pt; line-height: 1; margin: 0; }
 h1 em { font-style: normal; color: var(--blue); }
 h1 strong { font-weight: 400; color: var(--green); }
 .intro { font-size: 14pt; line-height: 1.35; margin: 12pt auto 0; max-width: 5.8in; font-weight: 500; }
-.hero { position: relative; width: 4.25in; margin: 0.05in auto 0; }
+.hero { position: relative; width: 3.55in; margin: 0.06in auto 0; }
 .hero img.book { width: 100%; display: block; }
 
-.body { flex: 1; padding: 0.3in 0.7in 0.22in; display: grid; grid-template-columns: 1fr max-content; gap: 0.45in; align-content: start; }
-.body h2 { font-size: 11pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 9pt; }
-.body p { font-size: 11.5pt; line-height: 1.5; margin: 0; color: var(--soft); text-wrap: pretty; }
+.body { flex: 1; padding: 0.26in 0.7in 0.2in; display: grid; grid-template-columns: 3.05in 1fr; gap: 0.4in; align-content: start; }
+.body h2 { font-family: "DakotaRough", "Arial Black", sans-serif; font-weight: 400; font-size: 17pt; line-height: 1; margin: 0 0 8pt; }
+.zig { display: block; width: 100%; height: auto; margin: 0 0 12pt; }
+.box { align-self: start; background: url("back_box_blank.png") center / 100% 100% no-repeat; color: #fff; padding: 0.3in 0.3in 0.34in; font-family: "DakotaRough", "Arial Black", sans-serif; }
+.box h3 { font-weight: 400; font-size: 27pt; line-height: 1; margin: 0 0 12pt; }
+.box ul { display: block; }
+.box li { display: block; white-space: normal; font-size: 15pt; line-height: 1.25; color: var(--sun); }
+.box li::before { display: none; }
+.box u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.body p { font-size: 11.5pt; line-height: 1.5; margin: 0 0 14pt; color: var(--soft); text-wrap: pretty; }
 ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8pt; }
 li { display: grid; grid-template-columns: 17pt 1fr; gap: 7pt; font-size: 11.5pt; line-height: 1.4; white-space: nowrap; }
 li::before { content: ""; width: 14pt; height: 14pt; margin-top: 1pt; border-radius: 50%; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 11pt no-repeat; }
@@ -37,30 +44,37 @@ li::before { content: ""; width: 14pt; height: 14pt; margin-top: 1pt; border-rad
 .offer .big { font-family: "DakotaRough", "Arial Black", sans-serif; font-size: 22pt; line-height: 1.05; }
 .offer .code { color: var(--sun); }
 .offer p { margin: 6pt 0 0; font-size: 11.5pt; line-height: 1.45; }
-.fine { margin-top: 12pt; font-size: 9pt; }
+.fine { margin-top: 9pt; font-size: 9pt; line-height: 1.5; }
+.fine .tag { font-family: "DakotaRough", "Arial Black", sans-serif; font-weight: 400; font-size: 12pt; color: var(--sun); }
 </style>
 </head>
 <body>
 <div class="page">
   <section class="top">
-    <img class="logo" src="logo_transparent.png" alt="2Homies">
+    <img class="logo" src="back_logo.png" alt="2Homies">
     <h1>Help <em>your kid</em> keep track<br>of life in <strong>two homes.</strong></h1>
-    <p class="intro">A yearlong calendar and feelings workbook for kids <span style="white-space:nowrap">ages 6 to 14</span> who go back and forth between two homes.</p>
     <div class="hero">
       <img class="book" src="file:///Users/christinadanton/2homies/illo/site/hero.jpg" alt="">
-      <img class="stk" src="2H_stickers_2_1.png" alt="" style="width:1.25in; right:-0.55in; top:0.35in; transform:rotate(10deg);">
-      <img class="stk" src="2H_stickers_2_3.png" alt="" style="width:0.95in; left:-0.7in; top:1.1in; transform:rotate(-9deg);">
-      <img class="stk" src="STICKER_1.png" alt="" style="width:1.05in; left:-0.55in; bottom:0.45in; transform:rotate(7deg);">
-      <img class="stk" src="2H_stickers_2_4.png" alt="" style="width:1.05in; right:-0.35in; bottom:0.3in; transform:rotate(-6deg);">
+      <img class="stk" src="2H_stickers_2_1.png" alt="" style="width:1.1in; right:-0.75in; top:0.1in; transform:rotate(10deg);">
+      <img class="stk" src="2H_stickers_2_3.png" alt="" style="width:0.85in; left:-0.85in; top:0.45in; transform:rotate(-9deg);">
+      <img class="stk" src="STICKER_1.png" alt="" style="width:0.95in; left:-0.95in; bottom:0.05in; transform:rotate(7deg);">
+      <img class="stk" src="2H_stickers_2_4.png" alt="" style="width:0.95in; right:-0.75in; bottom:0.1in; transform:rotate(-6deg);">
     </div>
   </section>
 
   <section class="body">
-    <div>
-      <h2>Why it helps</h2>
-      <p>Going back and forth is a lot for a kid to hold in their head: which home tonight, who's doing pickup, when the next switch is. When kids can see the plan for themselves, the week feels less out of their hands. The feelings pages give them a place for the rest. The book travels with them, so the plan goes where they go.</p>
+    <div class="box">
+      <h3>Not just a calendar.</h3>
+      <ul>
+        <li>A confidence builder.</li>
+        <li>A feelings helper.</li>
+        <li>A little daily cheerleader for kids with 2 homes.</li>
+        <li>That starts <u>any</u> time!</li>
+      </ul>
     </div>
     <div>
+      <img class="zig" src="back_zig.png" alt="">
+      <p>Made for kids who split their time between two homes, with mom and dad, a grandparent or another caregiver. A place to color-code the weeks, track special days and make sense of all the moving parts.</p>
       <h2>What's inside</h2>
       <ul>
         <li>Weekly pages to color-code each home</li>
@@ -79,7 +93,7 @@ li::before { content: ""; width: 14pt; height: 14pt; margin-top: 1pt; border-rad
         <p>Scan the code or visit 2homies.com.<br>Orders ship in 3 to 5 business days.</p>
       </div>
     </div>
-    <div class="fine">2Homies is a helpful everyday tool, not therapy. Made by moms. Illustrated by Maxine McCrann.</div>
+    <div class="fine"><b class="tag">Tools for homies with 2 homes. You are loved.</b><br>2Homies is a helpful everyday tool, not therapy. Made by moms. Illustrated by Maxine McCrann.</div>
     <img class="stk" src="houses_white.png" alt="" style="width:1.9in; right:0.6in; bottom:0.46in;">
   </section>
 </div>
