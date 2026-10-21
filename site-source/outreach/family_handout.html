@@ -15,7 +15,7 @@ body { width: 8.5in; height: 11in; font-family: "GTPlanar", "Helvetica Neue", Ar
 .stk { position: absolute; height: auto; pointer-events: none; }
 
 .top { position: relative; background: var(--sun); border-bottom: 2.5px solid var(--ink); padding: 0.48in 0.7in 0.42in; }
-.logo { height: 0.36in; width: auto; display: block; margin-bottom: 0.3in; }
+.logo { height: 0.5in; width: auto; display: block; margin-bottom: 0.3in; }
 h1 { font-family: "DakotaRough", "Arial Black", sans-serif; font-weight: 400; font-size: 40pt; line-height: 1; margin: 0; }
 h1 em { font-style: normal; color: var(--blue); white-space: nowrap; }
 .intro { font-size: 14.5pt; line-height: 1.35; margin: 12pt 0 0; max-width: 5.7in; font-weight: 500; }
@@ -28,6 +28,8 @@ li { display: grid; grid-template-columns: 17pt 1fr; gap: 8pt; font-size: 12.5pt
 li::before { content: ""; width: 14pt; height: 14pt; margin-top: 1pt; border-radius: 50%; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 11pt no-repeat; }
 
 .side { position: relative; }
+.homes { position: absolute; left: 0.75in; bottom: 0.2in; display: flex; align-items: flex-end; }
+.homes img { display: block; height: auto; }
 .peek { padding: 0 0.7in 0.26in; }
 .peek h2 { font-size: 11pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 9pt; }
 .peek-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.18in; }
@@ -45,7 +47,7 @@ li::before { content: ""; width: 14pt; height: 14pt; margin-top: 1pt; border-rad
 .offer .big { font-family: "DakotaRough", "Arial Black", sans-serif; font-size: 22pt; line-height: 1.05; }
 .offer .code { color: var(--sun); }
 .offer p { margin: 6pt 0 0; font-size: 11.5pt; line-height: 1.45; }
-.fine { background: var(--blue); color: #fff; padding: 0 0.7in 0.2in; font-size: 9pt; }
+.fine { background: var(--blue); color: #fff; margin-top: -2px; padding: 2px 0.7in 0.2in; font-size: 9pt; }
 </style>
 </head>
 <body>
@@ -76,7 +78,7 @@ li::before { content: ""; width: 14pt; height: 14pt; margin-top: 1pt; border-rad
       <img class="stk" src="STICKER_8.png" alt="" style="width:0.72in; left:-0.32in; top:1.7in; transform:rotate(-10deg);">
       <img class="stk" src="STICKER_1.png" alt="" style="width:1.05in; right:-0.38in; top:1.75in; transform:rotate(8deg);">
     </div>
-    <img class="stk" src="STICKER_15.png" alt="" style="width:1.5in; right:1.1in; bottom:0.35in; transform:rotate(-6deg);">
+    <div class="homes"><img src="cov_house_g.png" alt="" style="width:0.82in; transform:rotate(-5deg);"><img src="cov_keys.png" alt="" style="width:0.75in; margin:0 0.2in 0.25in; transform:rotate(-12deg);"><img src="cov_house_r.png" alt="" style="width:0.82in; transform:rotate(6deg);"></div>
   </section>
 
   <section class="bottom">
