@@ -11,41 +11,44 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body { width: 8.5in; height: 11in; font-family: "GTPlanar", "Helvetica Neue", Arial, sans-serif; color: var(--ink); background: var(--paper); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-.page { width: 8.5in; height: 11in; display: flex; flex-direction: column; overflow: hidden; }
+.page { width: 8.5in; height: 11in; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+.stk { position: absolute; height: auto; pointer-events: none; }
 
-.top { background: var(--sun); border-bottom: 2.5px solid var(--ink); padding: 0.45in 0.7in 0.4in; }
-.logo { height: 0.36in; width: auto; display: block; margin-bottom: 0.25in; }
-.kicker { font-size: 11pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 10pt; }
-h1 { font-family: "DakotaRough", "Arial Black", sans-serif; font-weight: 400; font-size: 44pt; line-height: .98; margin: 0; }
-h1 span { display: block; color: var(--blue); }
-.intro { font-size: 15pt; line-height: 1.35; margin: 14pt 0 0; max-width: 6.4in; font-weight: 500; }
+.top { position: relative; background: var(--sun); border-bottom: 2.5px solid var(--ink); padding: 0.5in 0.7in 0.45in; }
+.logo { height: 0.36in; width: auto; display: block; margin-bottom: 0.32in; }
+h1 { font-family: "DakotaRough", "Arial Black", sans-serif; font-weight: 400; font-size: 40pt; line-height: 1; margin: 0; }
+h1 em { font-style: normal; color: var(--blue); white-space: nowrap; }
+.intro { font-size: 15pt; line-height: 1.35; margin: 16pt 0 0; max-width: 5.7in; font-weight: 500; }
 
-.body { padding: 0.35in 0.7in 0.25in; display: grid; grid-template-columns: 1fr 2.7in; gap: 0.45in; align-items: start; }
+.body { position: relative; flex: 1; padding: 0.5in 0.7in 0.3in; display: grid; grid-template-columns: 1fr 2.6in; gap: 0.45in; align-items: start; }
 .body h2 { font-size: 11pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 8pt; }
-.body p { font-size: 12.5pt; line-height: 1.5; margin: 0 0 22pt; color: var(--soft); }
-ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9pt; }
-li { font-size: 12.5pt; line-height: 1.35; padding-left: 20pt; position: relative; }
-li::before { content: ""; position: absolute; left: 0; top: 5pt; width: 9pt; height: 9pt; border-radius: 50%; background: var(--green); }
-.cover { width: 100%; display: block; border-radius: 6px; margin-top: 4pt; }
-.from { margin-top: 22pt; font-size: 11pt; color: var(--soft); }
+.body p { font-size: 12.5pt; line-height: 1.55; margin: 0 0 26pt; color: var(--soft); }
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11pt; }
+li { display: grid; grid-template-columns: 17pt 1fr; gap: 8pt; font-size: 12.5pt; line-height: 1.35; }
+li::before { content: ""; width: 14pt; height: 14pt; margin-top: 1pt; border-radius: 50%; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 11pt no-repeat; }
+
+.side { position: relative; }
+.frame { background: var(--sun); border: 2.5px solid var(--ink); border-radius: 10px; padding: 0.32in 0.28in; }
+.cover { width: 100%; display: block; border-radius: 4px; }
+.from { margin-top: 20pt; font-size: 11pt; color: var(--soft); }
 .from .line { border-bottom: 1.5px solid var(--ink); height: 26pt; }
 
-.bottom { margin-top: auto; background: var(--ink); color: var(--paper); padding: 0.45in 0.7in 0.2in; display: flex; gap: 0.45in; align-items: center; }
-.qr { width: 1.45in; height: 1.45in; background: #fff; border-radius: 6px; padding: 5pt; flex: none; }
+.bottom { position: relative; margin-top: auto; background: var(--ink); color: var(--paper); padding: 0.28in 0.7in 0.12in; display: flex; gap: 0.32in; align-items: center; }
+.qr { width: 0.95in; height: 0.95in; background: #fff; border-radius: 5px; padding: 4pt; flex: none; }
 .qr img { width: 100%; height: 100%; display: block; }
-.offer .big { font-family: "DakotaRough", "Arial Black", sans-serif; font-size: 28pt; line-height: 1.05; }
+.offer .big { font-family: "DakotaRough", "Arial Black", sans-serif; font-size: 22pt; line-height: 1.05; }
 .offer .code { color: var(--sun); }
-.offer p { margin: 8pt 0 0; font-size: 12.5pt; line-height: 1.4; }
-.fine { background: var(--ink); color: rgba(255,253,245,.6); padding: 0 0.7in 0.3in; font-size: 9pt; }
+.offer p { margin: 6pt 0 0; font-size: 11.5pt; line-height: 1.45; }
+.fine { background: var(--ink); color: rgba(255,253,245,.6); padding: 0 0.7in 0.24in; font-size: 9pt; }
 </style>
 </head>
 <body>
 <div class="page">
   <section class="top">
     <img class="logo" src="logo_transparent.png" alt="2Homies">
-    <p class="kicker">The 2Homies Calendar &amp; Workbook</p>
-    <h1>Help your kid keep track<span>of life in two homes.</span></h1>
-    <p class="intro">A yearlong calendar and feelings workbook for kids ages 6 to 14 who go back and forth between two homes.</p>
+    <h1>Help your kid keep track<br>of life in <em>two homes.</em></h1>
+    <p class="intro">A yearlong calendar and feelings workbook for kids <span style="white-space:nowrap">ages 6 to 14</span> who go back and forth between two homes.</p>
+    <img class="stk" src="2H_stickers_2_1.png" alt="" style="width:1.3in; right:0.45in; top:0.3in; transform:rotate(9deg);">
   </section>
 
   <section class="body">
@@ -60,20 +63,24 @@ li::before { content: ""; position: absolute; left: 0; top: 5pt; width: 9pt; hei
         <li>Undated, so you can start any day of the year</li>
       </ul>
     </div>
-    <div>
-      <img class="cover" src="file:///Users/christinadanton/2homies/illo/site/hero.jpg" alt="">
+    <div class="side">
+      <div class="frame"><img class="cover" src="file:///Users/christinadanton/2homies/illo/site/hero.jpg" alt=""></div>
+      <img class="stk" src="STICKER_8.png" alt="" style="width:0.72in; left:-0.3in; top:-0.28in; transform:rotate(-10deg);">
+      <img class="stk" src="STICKER_1.png" alt="" style="width:1.05in; right:-0.38in; top:1.75in; transform:rotate(8deg);">
       <div class="from">Shared with you by
         <div class="line"></div>
       </div>
     </div>
+    <img class="stk" src="STICKER_15.png" alt="" style="width:1.45in; right:1.05in; bottom:0.32in; transform:rotate(-6deg);">
   </section>
 
   <section class="bottom">
     <div class="qr"><img src="qr_home.svg" alt="QR code for 2homies.com"></div>
     <div class="offer">
       <div class="big">Free shipping <span class="code">in the U.S.</span></div>
-      <p>Scan the code or visit 2homies.com. Orders ship in 3 to 5 business days.</p>
+      <p>Scan the code or visit 2homies.com.<br>Orders ship in 3 to 5 business days.</p>
     </div>
+    <img class="stk" src="STICKER_5.png" alt="" style="width:0.7in; right:0.75in; bottom:0.42in; transform:rotate(12deg);">
   </section>
   <div class="fine">2Homies is a helpful everyday tool, not therapy. Made by moms. Illustrated by Maxine McCrann.</div>
 </div>
