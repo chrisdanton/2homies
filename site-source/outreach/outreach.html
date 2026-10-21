@@ -1,0 +1,305 @@
+<title>2Homies Professional Outreach</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: one reading column like the Amazon kit, ending in a live lead tracker that widens to fit its table. */
+:root{
+  --paper:#FBF8F1; --panel:#FFFFFF; --ink:#15130F; --muted:#6E675B; --rule:#E2DACA; --field:#F4EFE3;
+  --yellow:#F5C200; --blue:#1B3FDE; --green:#2A8C3F; --orange:#FF6B00; --red:#D63418; --warn:#B87500;
+  --on-accent:#FFFFFF; --maxw:820px;
+  --display:'Archivo Black','Archivo',system-ui,sans-serif; --body:'Archivo',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15130E; --panel:#1E1B14; --ink:#F4EFE3; --muted:#A39A89; --rule:#332E23; --field:#26221A;
+    --yellow:#FFD233; --blue:#7C90FF; --green:#5CC26F; --orange:#FF8F3D; --red:#FF7355; --warn:#E0A030; --on-accent:#15130F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15130E; --panel:#1E1B14; --ink:#F4EFE3; --muted:#A39A89; --rule:#332E23; --field:#26221A;
+  --yellow:#FFD233; --blue:#7C90FF; --green:#5CC26F; --orange:#FF8F3D; --red:#FF7355; --warn:#E0A030; --on-accent:#15130F;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 90px}
+.mast{padding-block:52px 30px;border-bottom:3px solid var(--ink)}
+.kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+h1{font-family:var(--display);font-size:clamp(2.1rem,6.5vw,3.4rem);line-height:.98;letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance}
+.standfirst{font-size:1.06rem;color:var(--muted);margin:0;max-width:60ch}
+section{padding-block:46px;border-bottom:1px solid var(--rule)}
+section:last-of-type{border-bottom:none}
+.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.shead h2{font-family:var(--display);font-size:clamp(1.35rem,3.6vw,1.85rem);letter-spacing:-.015em;margin:0;line-height:1.1;text-wrap:balance}
+.marker{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:2px;white-space:nowrap}
+.m-y{background:var(--yellow);color:#15130F}.m-b{background:var(--blue);color:var(--on-accent)}.m-g{background:var(--green);color:var(--on-accent)}.m-o{background:var(--orange);color:var(--on-accent)}
+.intro{color:var(--muted);margin:0 0 26px;max-width:62ch}
+p{max-width:65ch}
+ul.plain{margin:0;padding-left:20px} ul.plain li{margin-bottom:8px}
+.block{background:var(--panel);border:1px solid var(--rule);border-radius:3px;margin-bottom:16px;overflow:hidden}
+.bhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:11px 14px;border-bottom:1px solid var(--rule);background:var(--field)}
+.blabel{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
+.copy{margin-left:auto;font-family:var(--body);font-size:.74rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:5px 11px;border-radius:2px;cursor:pointer}
+.copy:hover{background:var(--ink);color:var(--paper)}
+.copy.done{background:var(--green);border-color:var(--green);color:var(--on-accent)}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.btext{padding:14px;white-space:pre-wrap;font-size:.95rem;line-height:1.62}
+.flag{display:flex;gap:11px;align-items:flex-start;background:var(--field);border-left:3px solid var(--warn);padding:13px 15px;border-radius:2px;margin:22px 0}
+.flag .ft{font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--warn);padding-top:3px;white-space:nowrap}
+.flag p{margin:0;font-size:.93rem}
+.flag p+p{margin-top:8px}
+.flag.you{border-left-color:var(--blue)} .flag.you .ft{color:var(--blue)}
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:16px;padding-block:18px;border-top:1px solid var(--rule)}
+ol.steps li:last-child{border-bottom:1px solid var(--rule)}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--display);font-size:1.1rem;color:var(--orange);line-height:1.5}
+ol.steps h3{margin:0 0 4px;font-size:1rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+ol.steps p{margin:0;color:var(--muted);font-size:.94rem}
+.when{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:2px 7px;border-radius:2px}
+.box{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.box div{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:14px}
+.box b{display:block;font-size:.95rem;margin-bottom:4px}
+.box span{font-size:.88rem;color:var(--muted)}
+/* tracker */
+.trackwrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 90px}
+.tally{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.chip{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;border:1px solid var(--rule);background:var(--panel);color:var(--ink);padding:5px 10px;border-radius:999px;cursor:pointer;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tablebox{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.9rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;text-align:left;color:var(--muted);background:var(--field);padding:9px 10px;border-bottom:1px solid var(--rule)}
+td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.who b{display:block}
+td.who small{color:var(--muted);font-size:.8rem}
+td.who a{color:var(--blue);font-size:.8rem;word-break:break-all}
+.kind{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap}
+.k-law{background:var(--blue);color:var(--on-accent)}.k-therapy{background:var(--green);color:var(--on-accent)}.k-class{background:var(--orange);color:var(--on-accent)}.k-group{background:var(--yellow);color:#15130F}.k-school{background:var(--ink);color:var(--paper)}.k-creator{background:var(--red);color:var(--on-accent)}
+select,textarea,input{font:inherit;font-size:.88rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:6px 8px;width:100%}
+textarea{min-height:38px;resize:vertical}
+.st-sent{border-left:3px solid var(--blue)}.st-followed{border-left:3px solid var(--warn)}.st-yes{border-left:3px solid var(--green)}.st-not{border-left:3px solid var(--muted)}.st-todo{border-left:3px solid var(--rule)}
+.empty{padding:26px;color:var(--muted);text-align:center}
+form.add{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:18px;background:var(--field);border:1px solid var(--rule);border-radius:3px;padding:14px}
+form.add label{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+form.add button{align-self:end;font-family:var(--body);font-weight:700;background:var(--ink);color:var(--paper);border:none;border-radius:2px;padding:9px 14px;cursor:pointer}
+.status{font-size:.85rem;color:var(--muted);margin-top:10px;min-height:1.2em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <p class="kicker">2Homies &middot; Sales plan &middot; Fall 2026</p>
+    <h1>Professional outreach</h1>
+    <p class="standfirst">Reach the people who meet two-home families right when things change: family law attorneys, mediators, child and family therapists, school counselors and co-parenting class teachers. One yes from them reaches a steady stream of families.</p>
+  </header>
+
+  <section>
+    <div class="shead"><span class="marker m-y">Start here</span><h2>Begin with people you already know</h2></div>
+    <p class="intro">A warm introduction gets a yes far more often than a cold package. Before anyone on the list below, write down the professionals already in your circle:</p>
+    <ul class="plain">
+      <li>The family law attorney or mediator from Kirsten's own separation, if there was one.</li>
+      <li>Sailor's school counselor, or a therapist she or the family has seen.</li>
+      <li>Friends and school parents who are therapists, attorneys, mediators or counselors.</li>
+      <li>Anyone who has already bought or gifted a 2Homies. Ask who they'd pass it to.</li>
+    </ul>
+    <p style="margin-top:16px">Add each one to the tracker at the bottom of this page with the kind <b>School</b> or whichever fits.</p>
+  </section>
+
+  <section>
+    <div class="shead"><span class="marker m-o">How to reach out</span><h2>Email first, then mail</h2></div>
+    <p class="intro">For people you know, skip the email and send or drop off the book. For everyone on the list, email first.</p>
+    <ul class="plain">
+      <li><b>You get the right person and address.</b> Packages to a law firm or group practice often stop at the front desk. The email tells you who should get it.</li>
+      <li><b>Books go to people who want one.</b> Each copy costs you money. A yes by email means it gets opened and read.</li>
+      <li><b>No reply in a week?</b> Mail the book anyway to your top 10, addressed to the person by name. Then follow up once.</li>
+      <li><b>Nearby offices</b> (Venice, Santa Monica, Culver City): dropping off in person beats both. Bring a book and handouts.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="shead"><span class="marker m-b">The offer</span><h2>What we give and what we sell</h2></div>
+    <div class="box">
+      <div><b>A free copy</b><span>One book per professional, mailed or dropped off, with a note from Kirsten.</span></div>
+      <div><b>Handouts for families</b><span>A one-page sheet they can give parents, with a QR code to the shop and free U.S. shipping.</span></div>
+      <div><b>Practice packs</b><span>5 books for $175 or 10 for $350, shipped free, for offices that keep a few on hand or gift them to clients. 25 or more: they ask for a quote.</span></div>
+    </div>
+    <div class="flag you"><span class="ft">Decided</span><div>
+      <p><b>No discounts for now.</b> At the current print cost, each book costs more to make than it sells for. Packs are full price, and the family handout leads with free shipping instead of a code. Revisit after a bigger reprint.</p>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="marker m-g">The package</span><h2>What goes in the envelope</h2></div>
+    <div class="box">
+      <div><b>The book</b><span>One 2Homies Calendar &amp; Workbook.</span></div>
+      <div><b>Kirsten's note</b><span>Printed or handwritten. The text is below.</span></div>
+      <div><b>10 family handouts</b><span>The one-page sheet with the QR code and free shipping.</span></div>
+    </div>
+    <div class="flag you"><span class="ft">Ready</span><div>
+      <p><b>Family handout PDF</b> and <b>QR codes</b> are in ~/Downloads/2Homies_Outreach/. One QR goes to 2homies.com (it's on the handout). The other goes to the new professionals page, for Kirsten's note and email signature.</p>
+      <p><b>Professionals page</b> is live at www.2homies.com/professionals. Always include the "www" when you type it: without it, the link only works for the homepage.</p>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="marker m-o">Words</span><h2>The note and the follow-up</h2></div>
+    <p class="intro">Swap in the person's name. Both come from Kirsten, since her story is the reason this exists.</p>
+
+    <div class="block">
+      <div class="bhead"><span class="blabel">First email, before mailing</span><button class="copy" type="button">Copy</button></div>
+      <div class="btext" data-copy>Subject: A calendar for the kids in your families
+
+Hi [Name],
+
+I'm Kirsten, one of the moms behind 2Homies. When my daughter Sailor started living between two homes, she was getting overwhelmed, and regular calendars weren't made for her life. So my friend Chris and I made one that was: a yearlong calendar and feelings workbook for kids ages 6 to 14 with two homes.
+
+You meet families right when this matters most, and I'd love to send you a free copy. Who's the best person to send it to, and to what address?
+
+You can take a look here: www.2homies.com/professionals
+
+Thank you,
+Kirsten
+2homies.com</div>
+    </div>
+
+    <div class="block">
+      <div class="bhead"><span class="blabel">Message to a creator or podcast</span><button class="copy" type="button">Copy</button></div>
+      <div class="btext" data-copy>Hi [Name], I'm Kirsten, a mom in LA. [One line about a post of theirs you liked.] When my daughter started living between two homes, I couldn't find anything made for her, so my friend and I made 2Homies, a calendar and feelings workbook for kids with two homes. I'd love to send you a copy as a gift, no strings attached. If you'd like one, where should I send it?</div>
+    </div>
+
+    <div class="block">
+      <div class="bhead"><span class="blabel">Note in the package</span><button class="copy" type="button">Copy</button></div>
+      <div class="btext" data-copy>Hi [Name],
+
+I'm Kirsten, one of the moms behind 2Homies. When my daughter Sailor started living between two homes, she was getting overwhelmed. Who's picking her up from gymnastics? When is she switching homes? She was too young for a phone, and regular calendars weren't made for her life.
+
+So my friend Chris and I made one that was. 2Homies is a yearlong calendar and feelings workbook for kids ages 6 to 14 with two homes. Kids color-code each home and see the whole week at once, and there are pages that make room for feelings, like a feelings wheel and star breathing.
+
+You meet families right when this matters most, so I wanted you to have a copy. I've included a few handouts for the families you work with. If you'd like copies for your office, we have practice packs too.
+
+Thank you for the work you do.
+
+Kirsten
+2homies.com</div>
+    </div>
+
+    <div class="block">
+      <div class="bhead"><span class="blabel">Follow-up email, 7 to 10 days later</span><button class="copy" type="button">Copy</button></div>
+      <div class="btext" data-copy>Subject: The 2Homies calendar I sent
+
+Hi [Name],
+
+I sent you a copy of 2Homies last week and wanted to make sure it arrived. I'd love to hear what you think, especially whether it would be useful for the kids you see.
+
+If it would help, I'm happy to send more handouts, or set up a practice pack for your office.
+
+Thanks so much,
+Kirsten
+2homies.com</div>
+    </div>
+
+    <div class="block">
+      <div class="bhead"><span class="blabel">If they like it: ask for a quote</span><button class="copy" type="button">Copy</button></div>
+      <div class="btext" data-copy>I'm so glad it's helpful. Would you be comfortable with us sharing a sentence from you on our website, with your name and title? Something about what you've seen it do for kids, in your own words. No pressure at all if not.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="marker m-y">Timing</span><h2>The next six weeks</h2></div>
+    <ol class="steps">
+      <li><div><h3>Get reprint quotes<span class="when">This week</span></h3><p>Ask the printer for 500 and 1,000 copies. A lower cost per book is what makes discounts possible later.</p></div></li>
+      <li><div><h3>Print the handouts<span class="when">This week</span></h3><p>The PDF is ready. Print 10 per package.</p></div></li>
+      <li><div><h3>Send to your warm list<span class="when">Week 1</span></h3><p>Everyone from "Start here." Drop off in person where you can.</p></div></li>
+      <li><div><h3>Email 30 practices from the list below<span class="when">Week 1</span></h3><p>Use the first email. Mail the book to everyone who replies, plus your top 10 after a week.</p></div></li>
+      <li><div><h3>Message 10 creators and podcasts<span class="when">Week 1</span></h3><p>Gift only, no ask. For podcasts, offer Kirsten as a guest instead. If they post, they should mark it as a gift.</p></div></li>
+      <li><div><h3>Follow up<span class="when">Weeks 2 to 3</span></h3><p>Use the email above, 7 to 10 days after each package.</p></div></li>
+      <li><div><h3>Holiday gift push<span class="when">Mid Nov to mid Dec</span></h3><p>The holidays are the hardest stretch for kids splitting time. Posts and emails aimed at grandparents, aunts and uncles.</p></div></li>
+      <li><div><h3>January push to professionals<span class="when">Early Jan</span></h3><p>The most divorces are filed in January. Second round of packages, now with any quotes you've collected.</p></div></li>
+    </ol>
+  </section>
+</div>
+
+<div class="trackwrap">
+  <section style="border-bottom:none">
+    <div class="shead"><span class="marker m-b">Tracker</span><h2>Who we've reached</h2></div>
+    <p class="intro">35 LA practices and groups plus 13 creators and podcasts, from public directories, court lists and podcast pages. I haven't spoken to any of them, and some listings may be out of date, so check each website and address before mailing. Changes save for everyone who opens this page.</p>
+    <div class="tally" id="ktally" role="group" aria-label="Filter by kind"></div>
+    <div class="tally" id="tally" role="group" aria-label="Filter by status"></div>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th style="width:30%">Who</th><th>Kind</th><th style="width:16%">Status</th><th style="width:34%">Notes</th></tr></thead>
+        <tbody id="rows"><tr><td colspan="4" class="empty" id="emptymsg">Loading the list. If nothing appears, the tracker needs you to be signed in to claude.ai.</td></tr></tbody>
+      </table>
+    </div>
+    <form class="add" id="addform">
+      <label>Name<input id="f-name" required placeholder="Practice or person"></label>
+      <label>Kind<select id="f-kind"><option value="law">Attorney / mediator</option><option value="therapy">Therapist</option><option value="class">Co-parenting class / coach</option><option value="school">School</option><option value="group">Group / association</option><option value="creator">Creator / podcast</option></select></label>
+      <label>Area<input id="f-area" placeholder="e.g. Santa Monica"></label>
+      <label>Website<input id="f-url" placeholder="https://"></label>
+      <button type="submit">Add to list</button>
+    </form>
+    <p class="status" id="status" aria-live="polite"></p>
+  </section>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+  const t=b.closest('.block').querySelector('[data-copy]');
+  try{await navigator.clipboard.writeText(t.innerText);b.textContent='Copied';b.classList.add('done');setTimeout(()=>{b.textContent='Copy';b.classList.remove('done')},1600)}
+  catch(e){const r=document.createRange();r.selectNodeContents(t);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Press Cmd+C'}
+}));
+
+const STATUSES=[['todo','To contact'],['sent','Copy sent'],['followed','Followed up'],['yes','Said yes'],['not','Not now']];
+const KINDS={law:'Attorney / mediator',therapy:'Therapist',class:'Class / coach',school:'School',group:'Group',creator:'Creator'};
+const rowsEl=document.getElementById('rows'),tallyEl=document.getElementById('tally'),statusEl=document.getElementById('status');
+let leads=[],filter='all',kfilter='all',col=null;const ktallyEl=document.getElementById('ktally');
+
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function safeUrl(u){try{const x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:''}catch(e){return ''}}
+
+function render(){
+  const counts={all:leads.length};STATUSES.forEach(([k])=>counts[k]=leads.filter(l=>(l.status||'todo')===k).length);
+  tallyEl.innerHTML=[['all','All']].concat(STATUSES).map(([k,n])=>`<button type="button" class="chip" data-f="${k}" aria-pressed="${filter===k}">${n} &middot; ${counts[k]}</button>`).join('');
+  const kc={all:leads.length};Object.keys(KINDS).forEach(k=>kc[k]=leads.filter(l=>l.kind===k).length);
+  ktallyEl.innerHTML=[['all','Everyone']].concat(Object.entries(KINDS)).filter(([k])=>k==='all'||kc[k]).map(([k,n])=>`<button type="button" class="chip" data-k="${k}" aria-pressed="${kfilter===k}">${n} &middot; ${kc[k]}</button>`).join('');
+  const shown=leads.filter(l=>(filter==='all'||(l.status||'todo')===filter)&&(kfilter==='all'||l.kind===kfilter));
+  if(!leads.length){rowsEl.innerHTML='<tr><td colspan="4" class="empty">No one on the list yet. Add the first person with the form below.</td></tr>';return}
+  if(!shown.length){rowsEl.innerHTML='<tr><td colspan="4" class="empty">No one with this status yet.</td></tr>';return}
+  rowsEl.innerHTML=shown.map(l=>{const st=l.status||'todo',u=safeUrl(l.url);return `<tr class="st-${st}" data-id="${esc(l.id)}">
+    <td class="who"><b>${esc(l.name)}</b><small>${esc(l.detail||'')}${l.area?' &middot; '+esc(l.area):''}</small>${u?`<br><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))}</a>`:''}</td>
+    <td><span class="kind k-${esc(l.kind)}">${esc(KINDS[l.kind]||l.kind)}</span></td>
+    <td><select id="st-${esc(l.id)}" aria-label="Status for ${esc(l.name)}">${STATUSES.map(([k,n])=>`<option value="${k}"${k===st?' selected':''}>${n}</option>`).join('')}</select></td>
+    <td><textarea id="nt-${esc(l.id)}" aria-label="Notes for ${esc(l.name)}" placeholder="Add a note">${esc(l.notes||'')}</textarea></td></tr>`}).join('');
+}
+tallyEl.addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;filter=b.dataset.f;render()});
+ktallyEl.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;kfilter=b.dataset.k;render()});
+
+(async()=>{
+  const db=await window.claude?.use?.('db');
+  if(!db){document.getElementById('emptymsg').textContent='The shared list needs you to be signed in to claude.ai to load.';document.getElementById('addform').hidden=true;return}
+  col=db.collection('leads');
+  col.orderBy('order').onSnapshot(snap=>{
+    const active=document.activeElement;const keep=active&&active.id&&active.tagName==='TEXTAREA'?{id:active.id,val:active.value,pos:active.selectionStart}:null;
+    leads=snap.docs.map(d=>({id:d.id,...d.data()}));render();
+    if(keep){const el=document.getElementById(keep.id);if(el){el.value=keep.val;el.focus();try{el.setSelectionRange(keep.pos,keep.pos)}catch(e){}}}
+  },e=>{statusEl.textContent='The list stopped updating. Reload the page to reconnect.'});
+  rowsEl.addEventListener('change',async e=>{
+    const tr=e.target.closest('tr[data-id]');if(!tr)return;const id=tr.dataset.id;
+    try{
+      if(e.target.tagName==='SELECT')await col.doc(id).update({status:e.target.value,updatedAt:new Date().toISOString()});
+      else if(e.target.tagName==='TEXTAREA')await col.doc(id).update({notes:e.target.value.slice(0,2000),updatedAt:new Date().toISOString()});
+      statusEl.textContent='Saved.';
+    }catch(err){statusEl.textContent=err&&err.code==='permission_denied'?'You can view this list but not change it. Ask Chris for edit access.':'That change did not save. Try again.'}
+  });
+  document.getElementById('addform').addEventListener('submit',async e=>{
+    e.preventDefault();const name=document.getElementById('f-name').value.trim();if(!name)return;
+    try{
+      await col.add({name:name.slice(0,200),kind:document.getElementById('f-kind').value,area:document.getElementById('f-area').value.trim().slice(0,120),url:document.getElementById('f-url').value.trim().slice(0,300),status:'todo',notes:'',detail:'',order:Date.now()});
+      e.target.reset();statusEl.textContent='Added '+name+'.';
+    }catch(err){statusEl.textContent=err&&err.code==='permission_denied'?'You can view this list but not add to it. Ask Chris for edit access.':'Could not add that. Try again.'}
+  });
+})();
+</script>
