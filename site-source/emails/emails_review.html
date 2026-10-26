@@ -53,6 +53,16 @@ body { margin: 0; background: #e9e6dc; font-family: "GTPlanar", "Helvetica Neue"
 .promise h3 { font-weight: 400; font-size: 28px; line-height: 1; margin: 0 0 10px; }
 .promise ul { list-style: none; margin: 0; padding: 0; }
 .promise li { color: var(--sun); font-size: 19px; line-height: 1.3; }
+.em-top-gif { padding-bottom: 0; }
+.em-top-gif .gif { width: 100%; max-width: 520px; margin: 14px auto 0; }
+.em-body h1.welcome { font-size: 34px; }
+.em-body h1.welcome small { display: block; font-family: "GTPlanar", sans-serif; font-size: 15px; color: var(--soft); margin: 8px 0 8px; line-height: 1.3; }
+.pair { display: flex; gap: 26px; align-items: center; margin: 8px 0 4px; }
+.promise.sq { width: 250px; height: 250px; flex: none; margin: 0; display: flex; flex-direction: column; justify-content: center; padding: 24px 26px; }
+.promise.sq h3 { font-size: 26px; }
+.promise.sq li { font-size: 17px; }
+.pair-side p { margin: 0 0 10px; }
+.pair-side .btn { margin: 16px 0 0; }
 .ph { background: #fff; border: 2px dashed #b9b2a0; border-radius: 8px; padding: 26px; text-align: center; color: #8a8372; font-size: 14px; margin-bottom: 18px; }
 
 /* plain text versions */
@@ -115,24 +125,29 @@ Kirsten &amp; Chris</div>
       <p>Sent right away when someone signs up on the site. Just a hello and what 2Homies is about. It doesn't promise anything about future emails.</p>
     </div>
     <div class="client">
-      <div class="meta"><div class="subj">Welcome to 2Homies</div><div class="from">From: Kirsten &amp; Chris at 2Homies</div><div class="pre">Preview: A little hello from the two moms behind 2Homies.</div></div>
+      <div class="meta"><div class="subj">Welcome to 2Homies</div><div class="from">From: Kirsten &amp; Chris at 2Homies</div><div class="pre">Preview: Welcome (or sometimes, not welcome) to the 2Homies club.</div></div>
       <div class="canvas">
         <div class="em">
-          <div class="em-top"><img src="../outreach/wordmark_hi.png" alt="2Homies"></div>
+          <div class="em-top em-top-gif"><img src="../outreach/wordmark_hi.png" alt="2Homies"><img class="gif" src="img/welcome-book.gif" alt="Flipping through the 2Homies calendar"></div>
           <div class="em-body">
-            <h1>Hi!</h1>
-            <p>Thanks for signing up. We're Kirsten and Chris, two moms who made the calendar we couldn't find when Kirsten's daughter Sailor started living in two homes.</p>
-            <p>2Homies is a calendar and feelings workbook for kids ages 6 to 14 with two homes. It helps them see where they're going, look forward to the fun stuff and find words for big feelings. Both homes are theirs, and we want it to feel that way.</p>
-            <div class="promise">
-              <h3>Not just a calendar.</h3>
-              <ul>
-                <li>A confidence builder.</li>
-                <li>A feelings helper.</li>
-                <li>A little daily cheerleader for kids with 2 homes.</li>
-              </ul>
+            <h1 class="welcome">Welcome <small>(or sometimes, let's be honest, not welcome)</small> to the <span>2Homies club.</span></h1>
+            <p>We started 2Homies after seeing firsthand how disempowering going from 1 home to 2 can be for kids. We wanted to change that!</p>
+            <p>The 2Homies Calendar and Workbook is all about giving agency back to kids with 2 homes. A place where they can organize and understand their schedule, find simple and fun tools for big feelings, and just be themselves.</p>
+            <div class="pair">
+              <div class="promise sq">
+                <h3>Not just a calendar.</h3>
+                <ul>
+                  <li>A confidence builder.</li>
+                  <li>A feelings helper.</li>
+                  <li>A little daily cheerleader for kids with 2 homes.</li>
+                </ul>
+              </div>
+              <div class="pair-side">
+                <p>We hope it helps.</p>
+                <div class="sig">Kirsten &amp; Chris<small>2 moms who care</small></div>
+                <a class="btn" href="#">Meet the calendar</a>
+              </div>
             </div>
-            <a class="btn" href="#">Meet the calendar</a>
-            <div class="sig">Love, Kirsten &amp; Chris<small>the moms who made 2Homies</small></div>
             <img class="zig" src="../outreach/back_zig.png" alt="">
           </div>
           <div class="em-foot"><img src="../outreach/houses_color.png" alt=""><div><b>Tools for homies with 2 homes.</b>You're getting this because you signed up at 2homies.com. Unsubscribe anytime.</div></div>
@@ -152,7 +167,7 @@ Kirsten &amp; Chris</div>
       <div class="meta"><div class="subj">Your first week with 2Homies</div><div class="from">From: Kirsten &amp; Chris at 2Homies</div><div class="pre">Preview: Five small steps to get started.</div></div>
       <div class="canvas">
         <div class="em">
-          <img class="hero-img" src="../../illo/site/card-calendar.jpg" alt="A weekly spread from the 2Homies calendar">
+          <img class="hero-img" src="img/first-week-howto.jpg" alt="The How to use this calendar pages inside 2Homies">
           <div class="em-body">
             <h1>Ready, set, <span class="g">color.</span></h1>
             <p>Your 2Homies should be home by now. The first page tells your kid how to use it. Here's the short version:</p>
@@ -204,27 +219,28 @@ Kirsten &amp; Chris</div>
     <div class="note">
       <span class="when manual">Kirsten sends it</span>
       <h2>5. Practice pack thank you</h2>
-      <p>A personal email from Kirsten's own inbox for each pack order. Plain on purpose, so it reads like a real note. Fill in the bits in brackets.</p>
+      <p>A personal email from Kirsten's own inbox for each pack order. Plain on purpose, so it reads like a real note, but friendly. Fill in the bits in brackets.</p>
       <p>Attach the family handout PDF.</p>
     </div>
     <div class="client">
-      <div class="meta"><div class="subj">Your 2Homies practice pack</div><div class="from">From: Kirsten Ludwig</div></div>
+      <div class="meta"><div class="subj">Your homies are on the way!</div><div class="from">From: Kirsten Ludwig</div></div>
       <div class="canvas">
-        <div class="plain">Hi [Name],
+        <div class="plain">Hi [Name]!
 
-Thank you so much for ordering a practice pack for [practice name]. It means a lot that you'll be sharing 2Homies with the families you work with.
+Your 2Homies practice pack is officially on its way to [practice name]. That's [5 or 10] little calendars for [5 or 10] kids who could use one. We're so excited!
 
-Your [5 or 10] books ship in 3 to 5 business days. I've attached our family handout so you can print copies anytime.
+They ship in 3 to 5 business days. I've attached our family handout too, so you can print as many as you like.
 
-A couple of ideas for handing them out:
-• Give the book to the kid, not the parent. It's meant to be theirs.
-• There's a postcard in each book with a To and From line, so you can sign it first.
+A few tips from our end:
+• Hand the book to the kid, not the grown-up. It's theirs.
+• Each book has a postcard inside. Sign it, add a doodle, or both.
+• The stickers go fast. Just saying.
 
-If you'd like more handouts, a different number of books, or just want to tell me how it's going, reply here. I read every one.
+If you run out, want more handouts, or have a kid story you're allowed to share, hit reply. I read every one.
 
-Thank you,
-Kirsten Ludwig
-Mom and co-founder, 2Homies
+Thanks for being a homie,
+Kirsten
+Mom, co-founder and chief sticker officer at 2Homies
 2homies.com</div>
       </div>
     </div>
