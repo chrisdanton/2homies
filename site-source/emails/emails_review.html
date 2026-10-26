@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>2Homies emails for review</title>
+<style>
+@font-face { font-family: "DakotaRough"; src: url("file:///Users/christinadanton/2homies/Dakota-Rough-Regular.otf"); }
+@font-face { font-family: "GTPlanar"; src: url("file:///Users/christinadanton/2homies/GT-Planar-Trial-VF.ttf"); font-weight: 100 900; }
+:root { --sun:#FED12E; --paper:#FFFDF5; --ink:#111111; --soft:#4a4740; --green:#2A8C3F; --blue:#1B3FDE; --red:#E63B1F; --line:#e6e0cf; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #e9e6dc; font-family: "GTPlanar", "Helvetica Neue", Arial, sans-serif; color: var(--ink); padding: 40px 24px 90px; }
+.wrap { max-width: 1260px; margin: 0 auto; }
+.intro h1 { font-family: "DakotaRough", sans-serif; font-weight: 400; font-size: 40px; margin: 0 0 8px; }
+.intro p { margin: 0 0 6px; color: var(--soft); font-size: 16px; max-width: 760px; line-height: 1.5; }
+.row { display: grid; grid-template-columns: 300px 1fr; gap: 36px; margin-top: 56px; align-items: start; }
+.note h2 { font-family: "DakotaRough", sans-serif; font-weight: 400; font-size: 26px; line-height: 1; margin: 0 0 10px; }
+.note .when { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--green); border-radius: 999px; padding: 4px 10px; margin-bottom: 12px; }
+.note .when.later { background: var(--blue); }
+.note .when.manual { background: var(--red); }
+.note p { font-size: 15px; line-height: 1.5; color: var(--soft); margin: 0 0 10px; }
+
+/* mail client frame */
+.client { background: #fff; border-radius: 10px; box-shadow: 0 10px 28px rgba(0,0,0,.12); overflow: hidden; max-width: 700px; }
+.meta { padding: 16px 22px; border-bottom: 1px solid #eee; font-size: 14px; line-height: 1.5; }
+.meta .subj { font-weight: 700; font-size: 17px; }
+.meta .from, .meta .pre { color: #6b6b6b; }
+.canvas { background: #f4f1e8; padding: 28px 0; }
+
+/* the email itself, 600px */
+.em { width: 600px; max-width: 100%; margin: 0 auto; background: var(--paper); border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; }
+.em-top { background: var(--sun); padding: 26px 40px 22px; text-align: center; border-bottom: 2px solid var(--ink); }
+.em-top img { width: 180px; height: auto; display: block; margin: 0 auto; }
+.em-body { padding: 34px 44px 30px; font-size: 16px; line-height: 1.6; }
+.em-body h1 { font-family: "DakotaRough", "Arial Black", sans-serif; font-weight: 400; font-size: 38px; line-height: 1; margin: 0 0 16px; }
+.em-body h1 span { color: var(--blue); }
+.em-body h1 .g { color: var(--green); }
+.em-body p { margin: 0 0 14px; }
+.btn { display: inline-block; background: var(--green); color: #fff; font-weight: 700; text-decoration: none; padding: 13px 26px; border: 2px solid var(--ink); border-radius: 999px; margin: 6px 0 18px; }
+.steps { list-style: none; padding: 0; margin: 4px 0 18px; }
+.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; margin-bottom: 12px; align-items: start; }
+.steps li b.n { width: 30px; height: 30px; border-radius: 50%; background: var(--sun); border: 2px solid var(--ink); display: grid; place-items: center; font-size: 14px; }
+.steps li strong { display: block; }
+.tip { background: #fff; border: 2px solid var(--ink); border-radius: 8px; padding: 14px 18px; margin: 6px 0 20px; font-size: 15px; }
+.tip b { color: var(--red); }
+.sig { font-family: "DakotaRough", sans-serif; font-size: 22px; line-height: 1.1; margin-top: 6px; }
+.sig small { display: block; font-family: "GTPlanar", sans-serif; font-size: 13px; color: var(--soft); margin-top: 4px; }
+.zig { display: block; width: 220px; height: 11px; margin: 22px 0 0; }
+.em-foot { background: var(--paper); border-top: 2px solid var(--ink); padding: 18px 44px 22px; font-size: 12.5px; color: var(--soft); line-height: 1.55; display: flex; gap: 16px; align-items: center; }
+.em-foot img { width: 86px; height: auto; flex: none; }
+.em-foot b { font-family: "DakotaRough", sans-serif; font-weight: 400; color: var(--green); font-size: 15px; display: block; }
+.hero-img { display: block; width: 100%; height: 230px; object-fit: cover; border-bottom: 2px solid var(--ink); }
+.ph { background: #fff; border: 2px dashed #b9b2a0; border-radius: 8px; padding: 26px; text-align: center; color: #8a8372; font-size: 14px; margin-bottom: 18px; }
+
+/* plain text versions */
+.plain { width: 600px; max-width: 100%; margin: 0 auto; background: #fff; padding: 30px 36px; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #222; white-space: pre-line; border-radius: 6px; }
+.bcbox { width: 600px; max-width: 100%; margin: 0 auto; background: #fff; border-radius: 6px; overflow: hidden; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; color: #222; }
+.bcbox .bchead { padding: 22px 30px 12px; font-size: 22px; font-weight: 700; }
+.bcbox .msg { margin: 0 30px; padding: 16px 18px; background: #fbf8ef; border-left: 4px solid var(--sun); font-size: 15px; line-height: 1.6; white-space: pre-line; }
+.bcbox .rest { padding: 18px 30px 26px; color: #888; font-size: 13.5px; line-height: 1.7; }
+.bcbox .rest div { border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <h1>Emails for review</h1>
+    <p>Five emails. The first one works today inside Big Cartel. The next three need an email tool (like Kit or Mailchimp) connected to the shop. The pack email is one Kirsten sends herself.</p>
+    <p>Note: email apps don't show our hand-drawn font, so in the real emails the big headings will either be saved as images or show up in a bold standard font.</p>
+  </div>
+
+  <!-- 1 -->
+  <div class="row">
+    <div class="note">
+      <span class="when">Works today</span>
+      <h2>1. Order receipt message</h2>
+      <p>Big Cartel sends this with every order. It only lets us add a plain text message near the top of its own receipt, so no colors or images here.</p>
+      <p>This is where the thank you and the quick start live for now.</p>
+    </div>
+    <div class="client">
+      <div class="meta"><div class="subj">Your 2Homies order</div><div class="from">From: 2Homies</div></div>
+      <div class="canvas">
+        <div class="bcbox">
+          <div class="bchead">Thanks for your order!</div>
+          <div class="msg">Thank you so much! We're so happy your kid is getting a 2Homies of their own.
+
+We pack every order ourselves, and it ships in 3 to 5 business days. You'll get another email with tracking when it's on the way.
+
+When it arrives, here's an easy way to start:
+1. Pick a color for each home.
+2. Color in this week together.
+3. Add one fun thing with a sticker.
+
+Ordered a practice pack? Kirsten will email you about family handouts.
+
+Questions? Reply to this email and one of us will get back to you.
+
+Love,
+Kirsten &amp; Chris</div>
+          <div class="rest">Big Cartel's order details go here
+            <div>Order number, items, total, shipping address</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="row">
+    <div class="note">
+      <span class="when later">Needs email tool</span>
+      <h2>2. Welcome to the list</h2>
+      <p>Sent right away when someone signs up on the site for updates and new products.</p>
+    </div>
+    <div class="client">
+      <div class="meta"><div class="subj">Welcome to the homies</div><div class="from">From: Kirsten &amp; Chris at 2Homies</div><div class="pre">Preview: A little hello from the two moms behind 2Homies.</div></div>
+      <div class="canvas">
+        <div class="em">
+          <div class="em-top"><img src="../outreach/wordmark_hi.png" alt="2Homies"></div>
+          <div class="em-body">
+            <h1>Hi, <span>homie!</span></h1>
+            <p>Thanks for joining us. We're Kirsten and Chris, two moms who made the calendar we couldn't find when Kirsten's daughter Sailor started living in two homes.</p>
+            <p>Here's what you'll get from us:</p>
+            <ul class="steps">
+              <li><b class="n">1</b><span><strong>New things first.</strong>New products and sticker drops before anyone else.</span></li>
+              <li><b class="n">2</b><span><strong>Simple ideas.</strong>Small things that help kids feel at home in both homes.</span></li>
+              <li><b class="n">3</b><span><strong>Not too much.</strong>We only email when we have something worth sharing.</span></li>
+            </ul>
+            <a class="btn" href="#">Meet the calendar</a>
+            <div class="sig">Love, Kirsten &amp; Chris<small>the moms who made 2Homies</small></div>
+            <img class="zig" src="../outreach/back_zig.png" alt="">
+          </div>
+          <div class="em-foot"><img src="../outreach/houses_color.png" alt=""><div><b>Tools for homies with 2 homes.</b>You're getting this because you signed up at 2homies.com. Unsubscribe anytime.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="row">
+    <div class="note">
+      <span class="when later">Needs email tool</span>
+      <h2>3. Your first week</h2>
+      <p>Sent about 10 days after an order, so it lands once the book has arrived. This is the "how to use this calendar" email.</p>
+    </div>
+    <div class="client">
+      <div class="meta"><div class="subj">Your first week with 2Homies</div><div class="from">From: Kirsten &amp; Chris at 2Homies</div><div class="pre">Preview: Five small steps to get started.</div></div>
+      <div class="canvas">
+        <div class="em">
+          <img class="hero-img" src="../../illo/site/card-calendar.jpg" alt="A weekly spread from the 2Homies calendar">
+          <div class="em-body">
+            <h1>Ready, set, <span class="g">color.</span></h1>
+            <p>Your 2Homies should be home by now. The first page tells your kid how to use it. Here's the short version:</p>
+            <ul class="steps">
+              <li><b class="n">1</b><span><strong>Color-code your days.</strong>Pick a color for each home so the week makes sense at a glance.</span></li>
+              <li><b class="n">2</b><span><strong>Add the fun things.</strong>Yes days, sleepovers, field trips. Write them in or use the stickers.</span></li>
+              <li><b class="n">3</b><span><strong>Don't forget the important stuff.</strong>Haircuts, doctor visits, project due dates.</span></li>
+              <li><b class="n">4</b><span><strong>For when feelings get big.</strong>Turn to the tools pages.</span></li>
+              <li><b class="n">5</b><span><strong>Have fun.</strong>Plans change and mistakes happen. That's OK.</span></li>
+            </ul>
+            <div class="tip"><b>Tip:</b> Let your kid hold the pen. The more it's theirs, the more they'll use it.</div>
+            <p>We'd love to hear how it's going. Just hit reply.</p>
+            <div class="sig">Love, Kirsten &amp; Chris<small>the moms who made 2Homies</small></div>
+          </div>
+          <div class="em-foot"><img src="../outreach/houses_color.png" alt=""><div><b>Tools for homies with 2 homes.</b>You're getting this because you ordered from 2homies.com. Unsubscribe anytime.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="row">
+    <div class="note">
+      <span class="when later">Needs email tool</span>
+      <h2>4. New product template</h2>
+      <p>A reusable layout for news to the list. The gray boxes get swapped out each time.</p>
+    </div>
+    <div class="client">
+      <div class="meta"><div class="subj">[Something new from 2Homies]</div><div class="from">From: Kirsten &amp; Chris at 2Homies</div><div class="pre">Preview: [One line about what's new]</div></div>
+      <div class="canvas">
+        <div class="em">
+          <div class="em-top"><img src="../outreach/wordmark_hi.png" alt="2Homies"></div>
+          <div class="em-body">
+            <div class="ph">[Product photo]</div>
+            <h1>[Big <span>headline.</span>]</h1>
+            <p>[Two or three short sentences about what it is and who it's for.]</p>
+            <a class="btn" href="#">[Shop now]</a>
+            <div class="sig">Love, Kirsten &amp; Chris<small>the moms who made 2Homies</small></div>
+            <img class="zig" src="../outreach/back_zig.png" alt="">
+          </div>
+          <div class="em-foot"><img src="../outreach/houses_color.png" alt=""><div><b>Tools for homies with 2 homes.</b>You're getting this because you signed up at 2homies.com. Unsubscribe anytime.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="row">
+    <div class="note">
+      <span class="when manual">Kirsten sends it</span>
+      <h2>5. Practice pack thank you</h2>
+      <p>A personal email from Kirsten's own inbox for each pack order. Plain on purpose, so it reads like a real note. Fill in the bits in brackets.</p>
+      <p>Attach the family handout PDF.</p>
+    </div>
+    <div class="client">
+      <div class="meta"><div class="subj">Your 2Homies practice pack</div><div class="from">From: Kirsten Ludwig</div></div>
+      <div class="canvas">
+        <div class="plain">Hi [Name],
+
+Thank you so much for ordering a practice pack for [practice name]. It means a lot that you'll be sharing 2Homies with the families you work with.
+
+Your [5 or 10] books ship in 3 to 5 business days. I've attached our family handout so you can print copies anytime.
+
+A couple of ideas for handing them out:
+• Give the book to the kid, not the parent. It's meant to be theirs.
+• There's a postcard in each book with a To and From line, so you can sign it first.
+
+If you'd like more handouts, a different number of books, or just want to tell me how it's going, reply here. I read every one.
+
+Thank you,
+Kirsten Ludwig
+Mom and co-founder, 2Homies
+2homies.com</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

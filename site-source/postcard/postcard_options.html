@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>2Homies postcard options</title>
+<style>
+@font-face { font-family: "DakotaRough"; src: url("file:///Users/christinadanton/2homies/Dakota-Rough-Regular.otf"); }
+@font-face { font-family: "GTPlanar"; src: url("file:///Users/christinadanton/2homies/GT-Planar-Trial-VF.ttf"); font-weight: 100 900; }
+:root { --sun:#FED12E; --paper:#FFFDF5; --ink:#111111; --soft:#4a4740; --green:#2A8C3F; --blue:#1B3FDE; --red:#E63B1F; --pink:#F46FB4; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #e9e6dc; font-family: "GTPlanar", "Helvetica Neue", Arial, sans-serif; color: var(--ink); padding: 40px 24px 80px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; }
+.intro h1 { font-family: "DakotaRough", sans-serif; font-weight: 400; font-size: 40px; margin: 0 0 6px; }
+.intro p { margin: 0; color: var(--soft); font-size: 16px; }
+h2.sec { font-family: "DakotaRough", sans-serif; font-weight: 400; font-size: 28px; max-width: 1240px; margin: 44px auto 16px; }
+.grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(560px, 1fr)); gap: 36px 32px; }
+figure { margin: 0; }
+figcaption { margin-top: 12px; font-size: 15px; line-height: 1.45; }
+figcaption b { display: block; font-size: 17px; }
+
+/* the card: 6 x 4 in */
+.card { width: 576px; height: 384px; position: relative; overflow: hidden; border-radius: 4px; box-shadow: 0 10px 28px rgba(0,0,0,.16), 0 2px 6px rgba(0,0,0,.08); }
+.card img { position: absolute; display: block; height: auto; }
+.kiss { filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 4px 6px rgba(0,0,0,.18)); }
+.dak { font-family: "DakotaRough", sans-serif; font-weight: 400; line-height: .95; }
+
+/* A: houses */
+.a { background: var(--sun); }
+.a .dak { position: absolute; left: 0; right: 0; top: 38px; text-align: center; font-size: 56px; }
+.a .dak span { color: var(--blue); }
+
+/* B: let's go */
+.b { background: var(--paper); }
+
+/* C: stickers on blue */
+.c { background: var(--blue); }
+.c .dak { position: absolute; left: 0; right: 0; top: 126px; text-align: center; color: var(--sun); font-size: 58px; }
+.c .dak span { color: #fff; }
+
+/* D: cover pieces */
+.d { background: var(--paper); }
+.d .dak { position: absolute; left: 0; right: 0; top: 232px; text-align: center; font-size: 46px; }
+.d .dak span { color: var(--red); }
+
+/* backs */
+.back { background: var(--paper); padding: 34px 40px 30px; }
+.back .hi { max-width: 330px; font-family: "DakotaRough", sans-serif; font-size: 40px; line-height: 1; display: flex; align-items: flex-end; gap: 10px; }
+.back .line { flex: 1; border-bottom: 2.5px solid var(--ink); height: 32px; }
+.back p.msg { font-size: 16.5px; line-height: 1.5; margin: 18px 0 0; max-width: 330px; }
+.back .sign { font-family: "DakotaRough", sans-serif; font-size: 22px; margin-top: 18px; line-height: 1.1; }
+.back .sign small { display: block; font-family: "GTPlanar", sans-serif; font-size: 13px; color: var(--soft); margin-top: 4px; }
+.back .colors { position: absolute; right: 36px; top: 40px; width: 150px; text-align: center; }
+.back .colors .lab { font-family: "DakotaRough", sans-serif; font-size: 19px; line-height: 1.05; }
+.back .colors .dots { display: flex; justify-content: center; gap: 16px; margin-top: 12px; }
+.back .colors .dot { width: 46px; height: 46px; border: 2.5px solid var(--ink); border-radius: 50%; }
+.back .colors .sub { font-size: 11.5px; color: var(--soft); margin-top: 6px; display: flex; justify-content: center; gap: 22px; }
+.back .zig { left: 40px; right: 40px; bottom: 58px; width: 496px; height: 12px; }
+.back .foot { position: absolute; left: 40px; right: 40px; bottom: 22px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--soft); }
+.back .foot b { font-family: "DakotaRough", sans-serif; font-weight: 400; color: var(--green); font-size: 15px; }
+.back .tofrom { display: grid; gap: 14px; max-width: 330px; }
+.back .tofrom div { font-family: "DakotaRough", sans-serif; font-size: 28px; display: flex; align-items: flex-end; gap: 10px; }
+.back .tofrom .line { height: 26px; }
+</style>
+</head>
+<body>
+<div class="intro">
+  <h1>Postcard options</h1>
+  <p>6 × 4 in card that goes in every box. All art is from the calendar. Pick a front, and tell me what to change on the back.</p>
+</div>
+
+<h2 class="sec">Fronts</h2>
+<div class="grid">
+  <figure>
+    <div class="card a">
+      <div class="dak">Both homes<br>are <span>yours.</span></div>
+      <img src="../outreach/houses_color.png" alt="" style="width:330px; left:123px; bottom:16px;">
+    </div>
+    <figcaption><b>A. The house homies</b>The two house characters from the back cover with the line from the site. Simple, warm, very on brand.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="card b">
+      <img src="../../illo/site/letsgo-footer.webp" alt="" style="width:520px; left:28px; top:66px;">
+      <img src="../outreach/wordmark_hi.png" alt="" style="width:150px; left:213px; bottom:34px;">
+    </div>
+    <figcaption><b>B. Let's go!</b>The hand-lettered "Let's go!" from the inside pages. Feels like a kickoff. Cheerful but not busy.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="card c">
+      <img class="kiss" src="../../illo/2H_stickers_2_1.png" alt="" style="width:118px; left:30px; top:24px; transform:rotate(-8deg);">
+      <img class="kiss" src="../../illo/STICKER_2.png" alt="" style="width:112px; right:34px; top:22px; transform:rotate(7deg);">
+      <img class="kiss" src="../../illo/STICKER_5.png" alt="" style="width:74px; left:250px; top:26px; transform:rotate(-6deg);">
+      <div class="dak">This one's<br><span>all yours.</span></div>
+      <img class="kiss" src="../../illo/2H_stickers_2_13.png" alt="" style="width:124px; left:34px; bottom:24px; transform:rotate(6deg);">
+      <img class="kiss" src="../../illo/STICKER_8.png" alt="" style="width:80px; left:250px; bottom:22px; transform:rotate(8deg);">
+      <img class="kiss" src="../../illo/2H_stickers_2_12.png" alt="" style="width:128px; right:30px; bottom:22px; transform:rotate(-7deg);">
+    </div>
+    <figcaption><b>C. Sticker party</b>Stickers from the sticker sheet with white kiss-cut edges, on the blue from the back cover. The most fun for kids.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="card d">
+      <img src="../outreach/cov_house_g.png" alt="" style="width:150px; left:70px; top:42px; transform:rotate(-4deg);">
+      <img src="../outreach/cov_keys.png" alt="" style="width:130px; left:223px; top:96px; transform:rotate(8deg);">
+      <img src="../outreach/cov_house_r.png" alt="" style="width:150px; right:70px; top:42px; transform:rotate(4deg);">
+      <div class="dak">You are <span>loved.</span></div>
+      <img src="../outreach/back_zig.png" alt="" style="width:200px; height:10px; left:188px; bottom:52px;">
+    </div>
+    <figcaption><b>D. From the cover</b>The green house, red house and keys from the cover, with "You are loved." from the back cover. The quietest option.</figcaption>
+  </figure>
+</div>
+
+<h2 class="sec">Backs</h2>
+<div class="grid">
+  <figure>
+    <div class="card back">
+      <div class="hi">Hi <span class="line"></span>!</div>
+      <p class="msg">This calendar is all yours. Fill it with sleepovers, yes days and big plans. Both your homes are lucky to have you.</p>
+      <div class="sign">Love, Kirsten &amp; Chris<small>the moms who made 2Homies</small></div>
+      <div class="colors">
+        <div class="lab">Pick a color<br>for each home!</div>
+        <div class="dots"><span class="dot"></span><span class="dot"></span></div>
+        <div class="sub"><span>Home 1</span><span>Home 2</span></div>
+      </div>
+      <img class="zig" src="../outreach/back_zig.png" alt="">
+      <div class="foot"><b>Tools for homies with 2 homes.</b><span>2homies.com</span></div>
+    </div>
+    <figcaption><b>Family orders</b>Kirsten writes the name. Everything else is printed. The kid colors in a dot for each home, which is the first step in the book.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="card back">
+      <div class="tofrom">
+        <div>To <span class="line"></span></div>
+        <div>From <span class="line"></span></div>
+      </div>
+      <p class="msg">This calendar is all yours. Fill it with sleepovers, yes days and big plans. Both your homes are lucky to have you.</p>
+      <div class="colors">
+        <div class="lab">Pick a color<br>for each home!</div>
+        <div class="dots"><span class="dot"></span><span class="dot"></span></div>
+        <div class="sub"><span>Home 1</span><span>Home 2</span></div>
+      </div>
+      <img class="zig" src="../outreach/back_zig.png" alt="">
+      <div class="foot"><b>Tools for homies with 2 homes.</b><span>2homies.com</span></div>
+    </div>
+    <figcaption><b>Practice packs</b>Same message, but with To and From so a therapist, counselor or attorney can sign it and hand it over with the book.</figcaption>
+  </figure>
+</div>
+</body>
+</html>
